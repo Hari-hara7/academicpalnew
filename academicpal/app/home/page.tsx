@@ -1,16 +1,16 @@
 import NavBar from '@/components/NavBar';
 import HeroSection from '@/components/HeroSection';
 import KeyFeatures from '@/components/KeyFeatures';
-import PopularResources from '@/components/PopularResources';
-import HowItWorks from '@/components/HowItWorks';
-import ChatbotDemo from '@/components/ChatbotDemo';
+
 import Testimonials from '@/components/Testimonal';
-import LatestBlog from '@/components/LatestBlog';
-import NewsletterSignup from '@/components/NewsletterSignup';
+
 import Footer from '@/components/Footerhome';
 import About from '@/components/About';
 import Workit from '@/components/Workit';
 import Faq from '@/components/Faq';
+import Contact from '@/components/Contact';
+import Help from '@/components/Support'
+import Contact2 from '@/components/Contact2'
 
 
 export default function Home() {
@@ -24,13 +24,11 @@ export default function Home() {
           <Workit />
            <Testimonials />
            <Faq />
-        <PopularResources />
-        <HowItWorks />
-       
-        <ChatbotDemo />
-       
-        <LatestBlog />
-        <NewsletterSignup />
+           <Contact />
+           <Help />
+           <Contact2 />
+         
+        
       </main>
       <Footer />
     </div>

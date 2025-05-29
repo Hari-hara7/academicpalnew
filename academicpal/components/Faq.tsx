@@ -17,8 +17,20 @@ const faqs = [
     answer: "Yes! AcademicPal provides many free resources to students, with premium features available soon.",
   },
   {
-    question: "How can I contribute notes?",
-    answer: "Currently, contributions are by invite only. Contact us through the Learn More page for more information.",
+    question: "Can anyone contribute notes?",
+    answer: "Yes! We welcome note contributions from all students to help grow our community's resources.",
+  },
+  {
+    question: "Is the platform secure?",
+    answer: "Absolutely! We prioritize user data security and use best practices to keep your information safe.",
+  },
+  {
+    question: "Can anyone contribute to website development?",
+    answer: "Yes! We appreciate open source contributions to improve and expand AcademicPal.",
+  },
+  {
+    question: "How can I contribute notes or code?",
+    answer: "Reach out to us via the Learn More page or contact form, and we’ll guide you on how to contribute.",
   },
   {
     question: "Does AcademicPal have an AI search feature?",
