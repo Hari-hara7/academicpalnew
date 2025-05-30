@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Poppins } from "next/font/google";
@@ -58,15 +59,21 @@ export default function NewHero() {
           transition={{ delay: 1.5, duration: 0.8 }}
           className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
         >
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg shadow-lg flex items-center gap-2 transition-colors">
-            Get Started <ArrowRight className="w-5 h-5" />
-          </Button>
-          <Button
-            variant="outline"
-            className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg shadow-lg flex items-center gap-2 transition-all"
-          >
-            Learn More
-          </Button>
+       <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg shadow-lg flex items-center gap-2 transition-colors">
+  <Link href="/upload" className="flex items-center gap-2 w-full">
+    Get Started <ArrowRight className="w-5 h-5" />
+  </Link>
+</Button>
+
+<Button
+  variant="outline"
+  className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg shadow-lg flex items-center gap-2 transition-all"
+>
+  <Link href="/learn-more" className="flex items-center gap-2 w-full">
+    Learn More
+  </Link>
+</Button>
+
         </motion.div>
       </motion.div>
 

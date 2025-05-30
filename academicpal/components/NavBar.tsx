@@ -40,7 +40,7 @@ const NavBar = () => {
   }, []);
 
   const navLinks = [
-    { href: '/', label: 'Home', icon: <Home className="w-4 h-4 mr-2" /> },
+    { href: '/home', label: 'Home', icon: <Home className="w-4 h-4 mr-2" /> },
     { href: '/roadmaps', label: 'Roadmaps', icon: <BookOpen className="w-4 h-4 mr-2" /> },
     { href: '/resources', label: 'Resources', icon: <FileText className="w-4 h-4 mr-2" /> },
     { href: '/blog', label: 'Blog', icon: <FileText className="w-4 h-4 mr-2" /> },
