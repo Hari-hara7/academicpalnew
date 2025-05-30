@@ -58,7 +58,7 @@ const features = [
       'Powered by AI, our search tool delivers exactly what you need — whether it’s notes, references, or key materials — in seconds.',
     icon: Search,
     iconColor: 'text-lime-500',
-    link: '/chatbot',
+    link: 'https://academicpal-ml-chatbot-g6gn.vercel.app/',
     buttonText: 'Start Searching',
   },
   {
@@ -67,7 +67,7 @@ const features = [
       'Give back to the community! Upload your resources and gain access to a growing collection of shared study content.',
     icon: UploadCloud,
     iconColor: 'text-red-500',
-    link: '/contribute',
+    link: '/upload',
     buttonText: 'Upload or Explore',
   },
 ];
