@@ -78,8 +78,8 @@ export default function NewHero() {
         className="relative mt-12 lg:mt-0 w-full max-w-xs sm:max-w-md md:max-w-lg"
       >
         {/* Floating Blobs */}
-        <div className="absolute -top-10 -left-10 w-24 h-24 bg-blue-800/40 rounded-full blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute bottom-0 right-0 w-28 h-28 bg-blue-400/25 rounded-full blur-3xl animate-blob animation-delay-4000" />
+        <div className="absolute -top-10 -left-10 w-24 h-24 bg-blue-500/60 rounded-full blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute bottom-0 right-0 w-28 h-28 bg-blue-500/65 rounded-full blur-3xl animate-blob animation-delay-4000" />
 
         {/* Image Card */}
         <div className="relative bg-black border border-white/10 rounded-3xl shadow-lg overflow-hidden">

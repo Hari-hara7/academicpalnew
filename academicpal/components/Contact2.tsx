@@ -55,21 +55,45 @@ export default function ContactPage() {
         Contact
       </motion.h2>
 
-      <div className="grid md:grid-cols-2 gap-12">
-        {/* Developer Details */}
-        <motion.div
-          className="space-y-6 space-y-4 bg-black-900 border border-neutral-800 p-8 rounded-2xl shadow-md"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <ContactDetail icon={<Mail size={18} />} label="Hariharanath247@gmail.com" />
-          <ContactDetail icon={<Phone size={18} />} label="+91 7989777877" />
-          <ContactLink icon={<Github size={18} />} href="https://github.com/Hari-hara7" label="github.com/developer" />
-          <ContactLink icon={<Linkedin size={18} />} href="https://www.linkedin.com/in/hari-hara-nath-a13583282/" label="linkedin.com/in/developer" />
-          <ContactLink icon={<Globe size={18} />} href="https://hariharanath.is-cod.in/" label="developerportfolio.com" />
-        </motion.div>
+    <div className="grid md:grid-cols-2 gap-10">
+  {/* Developer Details */}
+  <motion.div
+    className="space-y-6 bg-black border border-gray-800 p-8 rounded-3xl shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]"
+    initial={{ opacity: 0, x: -20 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+  >
+    <h3 className="text-2xl font-semibold text-white mb-6 tracking-wide">
+      Contact
+    </h3>
+
+    <ContactDetail
+      icon={<Mail size={20} className="text-white transition-transform duration-300 group-hover:scale-110" />}
+      label="Hariharanath247@gmail.com"
+    />
+    <ContactDetail
+      icon={<Phone size={20} className="text-white transition-transform duration-300 group-hover:scale-110" />}
+      label="+91 7989777877"
+    />
+    <ContactLink
+      icon={<Github size={20} className="text-white transition-transform duration-300 group-hover:scale-110" />}
+      href="https://github.com/Hari-hara7"
+      label="github.com/developer"
+    />
+    <ContactLink
+      icon={<Linkedin size={20} className="text-white transition-transform duration-300 group-hover:scale-110" />}
+      href="https://www.linkedin.com/in/hari-hara-nath-a13583282/"
+      label="linkedin.com/in/developer"
+    />
+    <ContactLink
+      icon={<Globe size={20} className="text-white transition-transform duration-300 group-hover:scale-110" />}
+      href="https://hariharanath.is-cod.in/"
+      label="developerportfolio.com"
+    />
+  </motion.div>
+
+
 
         {/* Contact Form */}
         <motion.div
