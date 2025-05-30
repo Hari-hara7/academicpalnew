@@ -26,11 +26,7 @@ const testimonials = [
     name: "Nagendra",
     rating: 5,
   },
-  {
-    quote: "I appreciate the effort put into creating such valuable resources. Thank you, Academic Pal!",
-    name: "Harsha",
-    rating: 4,
-  },
+ 
   {
     quote:
       "There are no bugs as of now. This website is a godsend and it saved me for so many subjects. Thank you so much for this!!!",

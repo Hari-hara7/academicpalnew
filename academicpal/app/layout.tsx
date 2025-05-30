@@ -7,9 +7,9 @@ import HomeHeader from "../components/NavBar";
 import HomeFooter from "../components/Footerhome";
 import "./globals.css";
 
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-
   const isHome = pathname === "/home";
 
   return (
@@ -18,6 +18,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {isHome ? <HomeHeader /> : <Header />}
 
         <main className="flex-grow">{children}</main>
+
+        {/* Conditionally show BottomNav only on /home */}
+     
 
         {!isHome ? <HomeFooter /> : null}
       </body>

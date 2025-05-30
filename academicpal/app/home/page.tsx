@@ -11,6 +11,7 @@ import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import Help from '@/components/Support'
 import Contact2 from '@/components/Contact2'
+import BottomNav from "@/components/BottomNav";
 
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
            <Testimonials />
            <Faq />
            <Contact />
+             <BottomNav />
            <Help />
            <Contact2 />
          
