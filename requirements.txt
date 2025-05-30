@@ -1,0 +1,7 @@
+﻿Flask==3.0.3
+
+flask
+pandas
+flask-cors==5.0.1
+flask
+gunicorn

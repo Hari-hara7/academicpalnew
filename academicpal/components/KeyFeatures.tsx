@@ -58,7 +58,7 @@ const features = [
       'Powered by AI, our search tool delivers exactly what you need — whether it’s notes, references, or key materials — in seconds.',
     icon: Search,
     iconColor: 'text-lime-500',
-    link: '/ai-search',
+    link: '/chatbot',
     buttonText: 'Start Searching',
   },
   {

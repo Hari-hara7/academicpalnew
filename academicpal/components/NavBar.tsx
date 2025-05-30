@@ -24,6 +24,7 @@ import {
   Info,
   Mail,
   LayoutDashboard,
+  X,
 } from 'lucide-react';
 
 const NavBar = () => {
@@ -49,12 +50,12 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-black border-b border-white/10 shadow-xl">
+    <nav className="bg-black text-white fixed top-0 left-0 w-full z-50 shadow-md font-sans">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <Image src="/academicpal.jpg" alt="Academicpal Logo" width={42} height={42} className="rounded-md" />
-          <span className="text-xl font-bold text-white tracking-tight font-[Poppins]">
+          <span className="text-xl font-semibold tracking-tight leading-tight font-[Poppins]">
             Academicpal
           </span>
         </Link>
@@ -65,7 +66,7 @@ const NavBar = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="flex items-center px-2 py-1 text-white/90 hover:text-white transition duration-200 border-b-2 border-transparent hover:border-white"
+              className="flex items-center hover:text-gray-400 transition-colors duration-200"
             >
               {link.icon}
               {link.label}
@@ -73,68 +74,68 @@ const NavBar = () => {
           ))}
         </div>
 
-        {/* Auth Section */}
+        {/* User Info / Auth Desktop */}
         <div className="hidden md:flex items-center gap-4">
           {loading ? (
             <Skeleton className="h-10 w-10 rounded-full" />
           ) : user ? (
-            <div className="flex items-center gap-3">
-              <Avatar className="h-10 w-10 ring-2 ring-white">
+            <div className="flex items-center gap-2">
+              <Avatar className="h-9 w-9">
                 <AvatarImage src={user.photoURL || ''} />
                 <AvatarFallback>{user.displayName?.[0]}</AvatarFallback>
               </Avatar>
-              <div className="text-sm text-white">
-                <p className="font-semibold">{user.displayName}</p>
-                <p className="text-xs text-white/70">{user.email}</p>
-              </div>
+              <span className="text-sm">{user.email}</span>
             </div>
           ) : (
             <Link href="/login">
-              <Button className="bg-white text-black hover:bg-gray-200 transition">Login</Button>
+              <Button variant="ghost" className="text-black bg-white hover:bg-gray-100">
+                Login
+              </Button>
             </Link>
           )}
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Button */}
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden text-white hover:bg-white/10">
+            <Button variant="ghost" size="icon" className="md:hidden text-white hover:bg-gray-800">
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
 
-          <SheetContent side="left" className="bg-gradient-to-br from-black to-zinc-900 text-white w-64 p-6 shadow-lg">
-            <div className="flex flex-col items-center gap-4 mb-6">
+          <SheetContent side="left" className="bg-black text-white w-64 p-6 flex flex-col">
+            {/* Header with Avatar and Close Button */}
+            <div className="flex items-center justify-between mb-6">
               {loading ? (
-                <Skeleton className="h-16 w-16 rounded-full" />
+                <Skeleton className="h-12 w-12 rounded-full" />
               ) : user ? (
-                <>
-                  <Avatar className="h-16 w-16 ring-2 ring-white shadow-md">
+                <div className="flex items-center gap-3">
+                  <Avatar className="h-12 w-12">
                     <AvatarImage src={user.photoURL || ''} />
                     <AvatarFallback>{user.displayName?.[0]}</AvatarFallback>
                   </Avatar>
-                  <div className="text-center">
-                    <p className="text-lg font-bold">{user.displayName}</p>
-                    <p className="text-xs text-white/70">{user.email}</p>
+                  <div>
+                    <p className="text-lg font-semibold">{user.displayName || 'User'}</p>
+                    <p className="text-xs text-gray-400 truncate max-w-[120px]">{user.email}</p>
                   </div>
-                </>
+                </div>
               ) : (
                 <Link href="/login">
-                  <Button className="w-full text-black bg-white">Login</Button>
+                  <Button className="text-black bg-white">Login</Button>
                 </Link>
               )}
+
+              {/* Close Button */}
+             
             </div>
 
-            <SheetTitle className="text-xl font-bold mb-4 border-b border-white/20 pb-2">
-              Menu
-            </SheetTitle>
-
-            <div className="space-y-5">
+            {/* Navigation Links */}
+            <div className="flex flex-col gap-5">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="flex items-center text-sm text-white/90 hover:text-white transition duration-200"
+                  className="flex items-center text-sm hover:text-gray-400 transition"
                 >
                   {link.icon}
                   {link.label}
