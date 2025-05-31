@@ -46,7 +46,7 @@ const NavBar = () => {
     { href: '/blog', label: 'Blog', icon: <FileText className="w-4 h-4 mr-2" /> },
     { href: '/about', label: 'About', icon: <Info className="w-4 h-4 mr-2" /> },
     { href: '/contact', label: 'Contact', icon: <Mail className="w-4 h-4 mr-2" /> },
-    { href: '/dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4 mr-2" /> },
+    { href: '/dashboardd', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4 mr-2" /> },
   ];
 
   return (
