@@ -13,8 +13,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // Show Header only on "/" and "/signup"
   const showHeader = pathname === "/" || pathname === "/signup";
 
-  // Show HomeHeader on "/home", "/chat", and "/upload"
-  const showHomeHeader = ["/home", "/chat", "/upload", "/dashboard","/dashboard/timetable"].includes(pathname);
+const showHomeHeader =
+  [
+    "/home",
+    "/chat",
+    "/upload",
+    "/dashboard",
+    "/dashboard/timetable",
+    "/dashboard/timetable/create",
+    "/dashboard/flashcards",
+    "/dashboard/flashcards/create"
+  ].includes(pathname) ||///dashboard/flashcards/edit/
+  pathname.startsWith("/dashboard/timetable/edit/") ||
+  pathname.startsWith("/dashboard/timetable/delete/") ||  pathname.startsWith("/dashboard/flashcards/edit/");
+
+
 
   return (
     <html lang="en">

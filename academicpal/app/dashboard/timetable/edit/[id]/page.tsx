@@ -5,7 +5,9 @@ import { useParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
+import { toast } from 'sonner';
 import { TimetableType } from '@/types/timetable';
+import { Save, Plus } from 'lucide-react';
 
 export default function EditTimetablePage() {
   const { id } = useParams();
@@ -49,58 +51,79 @@ export default function EditTimetablePage() {
     });
 
     if (res.ok) {
+      toast.success('Timetable updated successfully!');
       router.push('/dashboard/timetable');
+    } else {
+      toast.error('Failed to update timetable.');
     }
   };
 
-  if (!timetable) return <p>Loading...</p>;
+  if (!timetable)
+    return <p className="text-white text-center">Loading...</p>;
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Edit Timetable</h1>
+    <div className="min-h-screen flex flex-col items-center bg-black p-4">
+      <div className="w-full max-w-2xl">
+        <h1 className="text-2xl font-bold mb-4 mt-8 text-white">Edit Timetable</h1>
 
-      <Input
-        className="mb-4"
-        value={timetable.title}
-        onChange={(e) => setTimetable({ ...timetable, title: e.target.value })}
-      />
+        <Input
+          className="mb-4 bg-transparent border border-white/30 text-white placeholder:text-white/50"
+          value={timetable.title}
+          onChange={(e) => setTimetable({ ...timetable, title: e.target.value })}
+          placeholder="Timetable Title"
+        />
 
-      {timetable.days.map((day, dIndex) => (
-        <Card key={dIndex} className="mb-4">
-          <CardContent className="p-4 space-y-2">
-            <Input
-              placeholder="Day (e.g. Monday)"
-              value={day.day}
-              onChange={(e) => updateDay(dIndex, 'day', e.target.value)}
-            />
+        {timetable.days.map((day, dIndex) => (
+          <Card
+            key={dIndex}
+            className="mb-4 border border-white/20 bg-black/40 text-white"
+          >
+            <CardContent className="p-4 space-y-3">
+              <Input
+                placeholder="Day (e.g. Monday)"
+                className="bg-transparent border border-white/30 text-white placeholder:text-white/50"
+                value={day.day}
+                onChange={(e) => updateDay(dIndex, 'day', e.target.value)}
+              />
 
-            {day.subjects.map((subject, sIndex) => (
-              <div key={sIndex} className="flex gap-2">
-                <Input
-                  placeholder="Subject"
-                  value={subject.name}
-                  onChange={(e) => updateSubject(dIndex, sIndex, 'name', e.target.value)}
-                />
-                <Input
-                  placeholder="Time"
-                  value={subject.time}
-                  onChange={(e) => updateSubject(dIndex, sIndex, 'time', e.target.value)}
-                />
-              </div>
-            ))}
+              {day.subjects.map((subject, sIndex) => (
+                <div key={sIndex} className="flex gap-2">
+                  <Input
+                    placeholder="Subject"
+                    className="bg-transparent border border-white/30 text-white placeholder:text-white/50"
+                    value={subject.name}
+                    onChange={(e) => updateSubject(dIndex, sIndex, 'name', e.target.value)}
+                  />
+                  <Input
+                    placeholder="Time"
+                    className="bg-transparent border border-white/30 text-white placeholder:text-white/50"
+                    value={subject.time}
+                    onChange={(e) => updateSubject(dIndex, sIndex, 'time', e.target.value)}
+                  />
+                </div>
+              ))}
 
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => addSubject(dIndex)}
-            >
-              + Add Subject
-            </Button>
-          </CardContent>
-        </Card>
-      ))}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => addSubject(dIndex)}
+                className="border-white/30 text-black flex gap-2 items-center hover:bg-white hover:text-black"
+              >
+                <Plus className="w-4 h-4" />
+                Add Subject
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
 
-      <Button onClick={handleSubmit}>Save Changes</Button>
+        <Button
+          onClick={handleSubmit}
+          className="mt-4 w-full bg-white text-black flex gap-2 items-center hover:bg-gray-200"
+        >
+          <Save className="w-4 h-4" />
+          Save Changes
+        </Button>
+      </div>
     </div>
   );
 }

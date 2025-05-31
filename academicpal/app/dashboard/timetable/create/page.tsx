@@ -4,7 +4,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Plus, Save } from 'lucide-react';
+import { toast } from 'sonner';
 
 export default function CreateTimetablePage() {
   const [title, setTitle] = useState('');
@@ -39,38 +41,53 @@ export default function CreateTimetablePage() {
     });
 
     if (res.ok) {
+      toast.success('Timetable saved successfully!', { duration: 3000 });
       router.push('/dashboard/timetable');
+    } else {
+      toast.error('Failed to save timetable.', { duration: 3000 });
     }
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Create Timetable</h1>
+    <div className="min-h-screen bg-black text-white p-6 flex flex-col gap-6 max-w-2xl mx-auto">
+      <h1 className="text-3xl font-bold mt-8">Create Timetable</h1>
 
       <Input
-        className="mb-4"
+        className="bg-transparent border border-white/20 text-white placeholder-gray-400 focus:ring-white"
         placeholder="Timetable Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
 
       {days.map((day, dIndex) => (
-        <Card key={dIndex} className="mb-4">
-          <CardContent className="p-4 space-y-2">
+        <Card
+          key={dIndex}
+          className="bg-transparent border border-white/20 shadow-none"
+        >
+          <CardHeader>
+            <CardTitle className="text-lg text-white">Day {dIndex + 1}</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-3">
             <Input
+              className="bg-transparent border border-white/20 text-white placeholder-gray-400 focus:ring-white"
               placeholder="Day (e.g. Monday)"
               value={day.day}
               onChange={(e) => updateDay(dIndex, 'day', e.target.value)}
             />
 
             {day.subjects.map((subject, sIndex) => (
-              <div key={sIndex} className="flex gap-2">
+              <div
+                key={sIndex}
+                className="flex flex-col sm:flex-row gap-2"
+              >
                 <Input
+                  className="bg-transparent border border-white/20 text-white placeholder-gray-400 focus:ring-white"
                   placeholder="Subject"
                   value={subject.name}
                   onChange={(e) => updateSubject(dIndex, sIndex, 'name', e.target.value)}
                 />
                 <Input
+                  className="bg-transparent border border-white/20 text-white placeholder-gray-400 focus:ring-white"
                   placeholder="Time (e.g. 10:00AM)"
                   value={subject.time}
                   onChange={(e) => updateSubject(dIndex, sIndex, 'time', e.target.value)}
@@ -79,19 +96,34 @@ export default function CreateTimetablePage() {
             ))}
 
             <Button
-              variant="outline"
+              variant="ghost"
               size="sm"
+              className="border border-white/20 text-white hover:bg-white/10 mt-2 flex items-center gap-1"
               onClick={() => addSubject(dIndex)}
             >
-              + Add Subject
+              <Plus className="h-4 w-4 text-white" />
+              Add Subject
             </Button>
           </CardContent>
         </Card>
       ))}
 
-      <div className="flex gap-2">
-        <Button onClick={addDay} variant="secondary">+ Add Day</Button>
-        <Button onClick={handleSubmit}>Save Timetable</Button>
+      <div className="flex flex-col sm:flex-row gap-3">
+        <Button
+          variant="ghost"
+          className="border border-white/20 text-white hover:bg-white/10 flex items-center gap-2"
+          onClick={addDay}
+        >
+          <Plus className="h-4 w-4 text-white" />
+          Add Day
+        </Button>
+        <Button
+          className="bg-white text-black hover:bg-gray-200 flex items-center gap-2"
+          onClick={handleSubmit}
+        >
+          <Save className="h-4 w-4" />
+          Save Timetable
+        </Button>
       </div>
     </div>
   );
