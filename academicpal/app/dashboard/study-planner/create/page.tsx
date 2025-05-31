@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Toaster, toast } from 'sonner';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -25,7 +26,11 @@ export default function CreateStudyTaskPage() {
 
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -43,12 +48,14 @@ export default function CreateStudyTaskPage() {
       const data = await res.json();
 
       if (data.success) {
+        toast.success('Task created successfully!');
         router.push('/dashboard/study-planner');
       } else {
-        alert('Failed to create task.');
+        toast.error('Failed to create task.');
       }
     } catch (err) {
       console.error('Error creating task:', err);
+      toast.error('An error occurred. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -56,6 +63,7 @@ export default function CreateStudyTaskPage() {
 
   return (
     <div className="min-h-screen bg-black text-white px-4 py-10">
+      <Toaster position="top-center" richColors />
       <div className="max-w-xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-bold">Create Study Task</h1>
@@ -78,7 +86,9 @@ export default function CreateStudyTaskPage() {
           <CardContent className="p-6 space-y-4">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <Label htmlFor="title" className="text-white">Title</Label>
+                <Label htmlFor="title" className="text-white">
+                  Title
+                </Label>
                 <Input
                   name="title"
                   value={form.title}
@@ -89,7 +99,9 @@ export default function CreateStudyTaskPage() {
               </div>
 
               <div>
-                <Label htmlFor="description" className="text-white">Description</Label>
+                <Label htmlFor="description" className="text-white">
+                  Description
+                </Label>
                 <Textarea
                   name="description"
                   value={form.description}
@@ -99,7 +111,9 @@ export default function CreateStudyTaskPage() {
               </div>
 
               <div>
-                <Label htmlFor="subject" className="text-white">Subject</Label>
+                <Label htmlFor="subject" className="text-white">
+                  Subject
+                </Label>
                 <Input
                   name="subject"
                   value={form.subject}
@@ -110,7 +124,9 @@ export default function CreateStudyTaskPage() {
               </div>
 
               <div>
-                <Label htmlFor="dueDate" className="text-white">Due Date</Label>
+                <Label htmlFor="dueDate" className="text-white">
+                  Due Date
+                </Label>
                 <Input
                   type="date"
                   name="dueDate"
@@ -122,7 +138,9 @@ export default function CreateStudyTaskPage() {
               </div>
 
               <div>
-                <Label htmlFor="priority" className="text-white">Priority</Label>
+                <Label htmlFor="priority" className="text-white">
+                  Priority
+                </Label>
                 <select
                   name="priority"
                   value={form.priority}
@@ -136,7 +154,9 @@ export default function CreateStudyTaskPage() {
               </div>
 
               <div>
-                <Label htmlFor="status" className="text-white mt-8">Status</Label>
+                <Label htmlFor="status" className="text-white mt-8">
+                  Status
+                </Label>
                 <select
                   name="status"
                   value={form.status}

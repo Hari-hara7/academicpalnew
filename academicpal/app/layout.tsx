@@ -24,11 +24,13 @@ const showHomeHeader =
     "/dashboard/timetable",
     "/dashboard/timetable/create",
     "/dashboard/flashcards",
-    "/dashboard/flashcards/create"
-  ].includes(pathname) ||////dashboard/study-planner/delete/
+    "/dashboard/flashcards/create",
+    "/dashboard/study-reminders",
+    "/dashboard/study-reminders/create"
+  ].includes(pathname) ||////dashboard/study-planner/delete//dashboard/study-reminders/edit/
   pathname.startsWith("/dashboard/timetable/edit/") ||
   pathname.startsWith("/dashboard/timetable/delete/") ||  pathname.startsWith("/dashboard/flashcards/edit/") || 
-   pathname.startsWith("/dashboard/study-planner/edit/") ||  pathname.startsWith("/dashboard/study-planner/delete/");
+   pathname.startsWith("/dashboard/study-planner/edit/") ||  pathname.startsWith("/dashboard/study-planner/delete/") ||  pathname.startsWith("/dashboard/study-reminders/edit/");
 
 
 
