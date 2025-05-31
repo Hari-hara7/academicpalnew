@@ -3,17 +3,8 @@
 import { useEffect, useState } from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '@/lib/firebase';
-import Image from 'next/image';
-import {
-  FaGoogle,
-  FaCommentAlt,
-  FaQuestionCircle
-} from 'react-icons/fa';
-import {
-  MdSchool,
-  MdContactSupport
-} from 'react-icons/md';
-import { SiAcademia } from 'react-icons/si';
+import { FaGoogle, FaCommentAlt, FaQuestionCircle } from 'react-icons/fa';
+import { Button } from '@/components/ui/button';
 
 interface AuthProps {
   setUser: (user: any) => void;
@@ -22,19 +13,24 @@ interface AuthProps {
 const Auth = ({ setUser }: AuthProps) => {
   const [text, setText] = useState('');
   const welcomeMessage =
-    'Welcome to Academic Pal! Your Ultimate Academic Companion';
+    'Welcome to Academic Pal Chat! ';
 
   useEffect(() => {
     let index = 0;
-    setText('');
-    const intervalId = setInterval(() => {
+    let animationFrameId: number;
+
+    const animateText = () => {
       setText(welcomeMessage.slice(0, index + 1));
       index++;
-      if (index === welcomeMessage.length) {
-        clearInterval(intervalId);
+      if (index < welcomeMessage.length) {
+        animationFrameId = window.setTimeout(animateText, 50);
       }
-    }, 100);
-    return () => clearInterval(intervalId);
+    };
+
+    setText('');
+    animationFrameId = window.setTimeout(animateText, 200);
+
+    return () => clearTimeout(animationFrameId);
   }, []);
 
   const signIn = async () => {
@@ -50,51 +46,42 @@ const Auth = ({ setUser }: AuthProps) => {
     alert('Please sign in with Google to continue.');
   };
 
+  const actionButtonClass =
+    'bg-white text-white hover:bg-gray-200 transition-transform transform hover:scale-105 flex items-center gap-2';
+
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white">
+    <div className="min-h-screen flex flex-col bg-black text-white font-sans">
       {/* Header */}
-      <header className="flex justify-between items-center p-4 md:p-6 bg-transparent shadow-md">
-     
-        <button
-          onClick={signIn}
-          className="flex items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 md:px-6 md:py-3 text-sm md:text-base rounded-full hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg transition-transform transform hover:scale-105"
-        >
-          <FaGoogle className="mr-2 md:mr-3" />
-          Sign in with Google
-        </button>
+      <header className="flex justify-end items-center mt-18 px-6">
+        <Button onClick={signIn} className={actionButtonClass} aria-label="Sign in with Google">
+          <FaGoogle className="text-black" />
+          <span className="text-black font-semibold">Sign in with Google</span>
+        </Button>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center text-center px-4 md:px-6">
-        <div className="max-w-lg">
-          <h1 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-blue-500 animate-text">
-              {text}
-            </span>
+      <main className="flex-1 flex items-center justify-center px-6 text-center">
+        <section className="max-w-xl">
+          <h1 className="text-3xl md:text-5xl font-bold mb-6">
+            <span className="text-white-400">{text}</span>
           </h1>
-          <p className="text-sm md:text-lg mb-6 md:mb-8">
-            Connect, collaborate, and access valuable academic resources effortlessly.
+          <p className="text-base md:text-lg mb-8 text-neutral-200">
+            Connect, collaborate, and access{' '}
+            <span className="text-purple-400 font-semibold">valuable academic resources</span>{' '}
+            effortlessly.
           </p>
-          <div className="flex flex-col md:flex-row justify-center gap-4">
-            <button
-              onClick={handleProtectedAction}
-              className="flex items-center justify-center bg-green-500 px-4 py-2 md:px-5 md:py-3 text-white text-sm md:text-base rounded-lg hover:bg-green-600 shadow-md transition-transform transform hover:scale-105"
-            >
-              <FaCommentAlt className="mr-2" />
-              Start Chat
-            </button>
-            <button
-              onClick={handleProtectedAction}
-              className="flex items-center justify-center bg-blue-500 px-4 py-2 md:px-5 md:py-3 text-white text-sm md:text-base rounded-lg hover:bg-blue-600 shadow-md transition-transform transform hover:scale-105"
-            >
-              <FaQuestionCircle className="mr-2" />
-              Ask a Question
-            </button>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+            <Button onClick={handleProtectedAction} className={actionButtonClass} aria-label="Start Chat">
+              <FaCommentAlt className="text-black" />
+              <span className="text-black font-semibold">Start Chat</span>
+            </Button>
+            <Button onClick={handleProtectedAction} className={actionButtonClass} aria-label="Ask a Question">
+              <FaQuestionCircle className="text-black" />
+              <span className="text-black font-semibold">Ask a Question</span>
+            </Button>
           </div>
-        </div>
+        </section>
       </main>
-
-   
     </div>
   );
 };

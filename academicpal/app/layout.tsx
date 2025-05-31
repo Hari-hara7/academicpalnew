@@ -19,6 +19,8 @@ const showHomeHeader =
     "/chat",
     "/upload",
     "/dashboard",
+    "/login",
+    "/register",
     "/dashboard/timetable",
     "/dashboard/timetable/create",
     "/dashboard/flashcards",

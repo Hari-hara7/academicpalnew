@@ -18,12 +18,29 @@ export default function FlashcardsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/flashcards/get')
-      .then((res) => res.json())
-      .then((data) => {
-        setFlashcards(data);
+    async function loadFlashcards() {
+      try {
+        const res = await fetch('/api/flashcards/get');
+        const data = await res.json();
+        console.log('Fetched flashcards data:', data);
+
+        // Ensure data is an array
+        if (Array.isArray(data)) {
+          setFlashcards(data);
+        } else if (Array.isArray(data.flashcards)) {
+          setFlashcards(data.flashcards);
+        } else {
+          setFlashcards([]); // fallback to empty array
+        }
+      } catch (error) {
+        console.error('Error fetching flashcards:', error);
+        setFlashcards([]); // fallback to empty array
+      } finally {
         setLoading(false);
-      });
+      }
+    }
+
+    loadFlashcards();
   }, []);
 
   if (loading) {

@@ -11,9 +11,23 @@ export default function TimetableListPage() {
 
   useEffect(() => {
     async function load() {
-      const res = await fetch('/api/timetable/get');
-      const data = await res.json();
-      setTimetables(data);
+      try {
+        const res = await fetch('/api/timetable/get');
+        const data = await res.json();
+        console.log('Fetched data:', data);
+
+        // Ensure data is an array, or fallback to empty array
+        if (Array.isArray(data)) {
+          setTimetables(data);
+        } else if (Array.isArray(data.timetables)) {
+          setTimetables(data.timetables);
+        } else {
+          setTimetables([]);
+        }
+      } catch (error) {
+        console.error('Error fetching timetables:', error);
+        setTimetables([]);
+      }
     }
     load();
   }, []);
@@ -34,55 +48,59 @@ export default function TimetableListPage() {
 
         {/* Timetable Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {timetables.map((tt) => (
-            <div
-              key={tt._id}
-              className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg p-6 shadow-xl transition hover:border-white/20"
-            >
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h2 className="text-xl font-semibold">{tt.title}</h2>
-                  <p className="text-sm text-white/60">{tt.days.length} days scheduled</p>
-                </div>
-                <div className="flex gap-2">
-                  <Link href={`/dashboard/timetable/edit/${tt._id}`}>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="text-white hover:bg-white/10 transition"
-                    >
-                      <Pencil className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                  <Link href={`/dashboard/timetable/delete/${tt._id}`}>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="text-red-400 hover:bg-red-500/10 transition"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {tt.days.map((day, dIdx) => (
-                  <div key={dIdx}>
-                    <h3 className="text-white/80 font-medium">{day.day}</h3>
-                    <ul className="ml-4 list-disc text-sm text-white/60">
-                      {day.subjects.map((subject, sIdx) => (
-                        <li key={sIdx}>
-                          <span className="text-white font-medium">{subject.name}</span> —{' '}
-                          {subject.time}
-                        </li>
-                      ))}
-                    </ul>
+          {Array.isArray(timetables) && timetables.length > 0 ? (
+            timetables.map((tt) => (
+              <div
+                key={tt._id}
+                className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg p-6 shadow-xl transition hover:border-white/20"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h2 className="text-xl font-semibold">{tt.title}</h2>
+                    <p className="text-sm text-white/60">{tt.days.length} days scheduled</p>
                   </div>
-                ))}
+                  <div className="flex gap-2">
+                    <Link href={`/dashboard/timetable/edit/${tt._id}`}>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="text-white hover:bg-white/10 transition"
+                      >
+                        <Pencil className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                    <Link href={`/dashboard/timetable/delete/${tt._id}`}>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="text-red-400 hover:bg-red-500/10 transition"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {tt.days.map((day, dIdx) => (
+                    <div key={dIdx}>
+                      <h3 className="text-white/80 font-medium">{day.day}</h3>
+                      <ul className="ml-4 list-disc text-sm text-white/60">
+                        {day.subjects.map((subject, sIdx) => (
+                          <li key={sIdx}>
+                            <span className="text-white font-medium">{subject.name}</span> —{' '}
+                            {subject.time}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="col-span-full text-center text-white/60">No timetables found.</p>
+          )}
         </div>
       </div>
     </div>
