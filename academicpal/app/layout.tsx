@@ -10,7 +10,6 @@ import "./globals.css";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  // Show Header only on "/" and "/signup"
   const showHeader = pathname === "/" || pathname === "/signup";
 
 const showHomeHeader =
@@ -21,13 +20,15 @@ const showHomeHeader =
     "/dashboard",
     "/login",
     "/register",
+    "/dashboard/study-planner",
     "/dashboard/timetable",
     "/dashboard/timetable/create",
     "/dashboard/flashcards",
     "/dashboard/flashcards/create"
-  ].includes(pathname) ||///dashboard/flashcards/edit/
+  ].includes(pathname) ||////dashboard/study-planner/delete/
   pathname.startsWith("/dashboard/timetable/edit/") ||
-  pathname.startsWith("/dashboard/timetable/delete/") ||  pathname.startsWith("/dashboard/flashcards/edit/");
+  pathname.startsWith("/dashboard/timetable/delete/") ||  pathname.startsWith("/dashboard/flashcards/edit/") || 
+   pathname.startsWith("/dashboard/study-planner/edit/") ||  pathname.startsWith("/dashboard/study-planner/delete/");
 
 
 

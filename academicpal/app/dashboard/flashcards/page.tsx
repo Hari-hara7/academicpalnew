@@ -74,7 +74,7 @@ export default function FlashcardsPage() {
             {flashcards.map((f) => (
               <Card
                 key={f._id}
-                className="bg-transparent border border-white/10 backdrop-blur-md transition hover:border-white/20"
+                className="bg-transparent border border-white/40 backdrop-blur-md transition hover:border-white/20"
               >
                 <CardHeader>
                   <h2 className="text-lg font-semibold text-white">Q: {f.question}</h2>
