@@ -20,6 +20,7 @@ const showHomeHeader =
     "/dashboard",
     "/login",
     "/register",
+    "/contact",
     "/dashboard/study-planner",
     "/dashboard/timetable",
     "/dashboard/timetable/create",
@@ -32,7 +33,9 @@ const showHomeHeader =
     "/dashboard/study-reminders/create",
     "/dashboard/blogs",
     "/dashboard/blogs/create",
-    "/dashboard/performance-analytics/create"
+    "/dashboard/performance-analytics/create",
+    "/about",
+    "/dashboardd"
   ].includes(pathname) ||///dashboard/study-groups/
   pathname.startsWith("/dashboard/timetable/edit/") ||
   pathname.startsWith("/dashboard/timetable/delete/") ||  pathname.startsWith("/dashboard/flashcards/edit/") || 

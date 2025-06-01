@@ -41,9 +41,9 @@ const NavBar = () => {
 
   const navLinks = [
     { href: '/home', label: 'Home', icon: <Home className="w-4 h-4 mr-2" /> },
-    { href: '/roadmaps', label: 'Roadmaps', icon: <BookOpen className="w-4 h-4 mr-2" /> },
-    { href: '/resources', label: 'Resources', icon: <FileText className="w-4 h-4 mr-2" /> },
-    { href: '/blog', label: 'Blog', icon: <FileText className="w-4 h-4 mr-2" /> },
+    { href: '/login', label: 'Tools', icon: <BookOpen className="w-4 h-4 mr-2" /> },
+    { href: '/upload', label: 'Resources', icon: <FileText className="w-4 h-4 mr-2" /> },
+    { href: '/register', label: 'Blog', icon: <FileText className="w-4 h-4 mr-2" /> },
     { href: '/about', label: 'About', icon: <Info className="w-4 h-4 mr-2" /> },
     { href: '/contact', label: 'Contact', icon: <Mail className="w-4 h-4 mr-2" /> },
     { href: '/dashboardd', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4 mr-2" /> },

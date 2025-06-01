@@ -23,7 +23,7 @@ import Link from 'next/link';
 
 const features = [
   {
-    title: '📝 Blogs',
+    title: ' Blogs',
     description:
       'Read and write blogs on study strategies, academic tips, and personal experiences.',
     icon: FileText,
@@ -32,7 +32,7 @@ const features = [
     buttonText: 'Explore Blogs',
   },
   {
-    title: '📚 Comprehensive Notes',
+    title: ' Comprehensive Notes',
     description:
       'Access crisp, well-organized notes for all subjects. Designed for clarity and speed, these notes help you revise smarter before exams.',
     icon: NotebookText,
@@ -41,7 +41,7 @@ const features = [
     buttonText: 'Access Notes',
   },
   {
-    title: '📝 Past Question Papers',
+    title: ' Past Question Papers',
     description:
       'Prepare with confidence using past papers. Understand frequently asked questions and get familiar with real exam patterns.',
     icon: FileText,
@@ -50,7 +50,7 @@ const features = [
     buttonText: 'View Papers',
   },
   {
-    title: '💬 Real-Time Chat',
+    title: ' Real-Time Chat',
     description:
       'Engage with peers instantly. Ask questions, share insights, and get help right when you need it — without the wait.',
     icon: MessageCircle,
@@ -59,7 +59,7 @@ const features = [
     buttonText: 'Chat Now',
   },
   {
-    title: '🔍 AcademicPal AI - Smart Notes Search',
+    title: ' AcademicPal AI - Smart Notes Search',
     description:
       'Powered by AI, our search tool delivers exactly what you need — whether it’s notes, references, or key materials — in seconds.',
     icon: Search,
@@ -68,7 +68,7 @@ const features = [
     buttonText: 'Start Searching',
   },
   {
-    title: '📤 Access & Contribute Materials',
+    title: ' Access & Contribute Materials',
     description:
       'Give back to the community! Upload your resources and gain access to a growing collection of shared study content.',
     icon: UploadCloud,
@@ -77,7 +77,7 @@ const features = [
     buttonText: 'Upload or Explore',
   },
   {
-    title: '🧠 Flashcards',
+    title: ' Flashcards',
     description:
       'Memorize key concepts with interactive flashcards tailored to your subjects and topics.',
     icon: Brain, // import from lucide-react or use your own icon
@@ -86,7 +86,7 @@ const features = [
     buttonText: 'Start Reviewing',
   },
   {
-    title: '🗓️ Study Planner',
+    title: ' Study Planner',
     description:
       'Plan your study schedule efficiently with customizable timetables and task lists.',
     icon: CalendarCheck,
@@ -95,7 +95,7 @@ const features = [
     buttonText: 'Plan Now',
   },
   {
-    title: '📊 Performance Analytics',
+    title: ' Performance Analytics',
     description:
       'Track your study hours, identify weak areas, and visualize your progress with detailed charts.',
     icon: BarChart4,
@@ -104,7 +104,7 @@ const features = [
     buttonText: 'View Stats',
   },
   {
-    title: '⏰ Study Reminders',
+    title: ' Study Reminders',
     description:
       'Stay on track with personalized study notifications and reminders sent directly to your browser.',
     icon: AlarmClock,
@@ -114,7 +114,7 @@ const features = [
   },
  
   {
-    title: '👥 Study Groups',
+    title: ' Study Groups',
     description:
       'Join or create study groups with like-minded peers to collaborate, discuss, and grow together.',
     icon: Users2,
@@ -123,7 +123,7 @@ const features = [
     buttonText: 'Join a Group',
   },
  {
-    title: '📅 Timetable Generator',
+    title: ' Timetable Generator',
     description:
       'Create and customize your academic timetable based on your course structure and preferences.',
     icon: CalendarDays,
