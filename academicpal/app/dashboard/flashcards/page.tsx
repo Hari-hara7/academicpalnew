@@ -24,17 +24,16 @@ export default function FlashcardsPage() {
         const data = await res.json();
         console.log('Fetched flashcards data:', data);
 
-        // Ensure data is an array
         if (Array.isArray(data)) {
           setFlashcards(data);
         } else if (Array.isArray(data.flashcards)) {
           setFlashcards(data.flashcards);
         } else {
-          setFlashcards([]); // fallback to empty array
+          setFlashcards([]);
         }
       } catch (error) {
         console.error('Error fetching flashcards:', error);
-        setFlashcards([]); // fallback to empty array
+        setFlashcards([]);
       } finally {
         setLoading(false);
       }
@@ -52,58 +51,67 @@ export default function FlashcardsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black px-4 py-10 text-white font-sans">
-      <div className="max-w-5xl mx-auto space-y-6">
+    <div className="min-h-screen bg-black px-4 py-8 text-white font-sans">
+      <div className="max-w-6xl mx-auto flex flex-col gap-6">
         {/* Header */}
-        <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold">Your Flashcards</h1>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
+          <h1 className="text-2xl sm:text-3xl font-bold text-center sm:text-left">
+            Your Flashcards
+          </h1>
           <Link href="/dashboard/flashcards/create">
-            <Button className="bg-white text-black hover:bg-gray-200 flex items-center gap-2 shadow px-5">
+            <Button className="bg-white text-black hover:bg-gray-200 flex items-center gap-2 shadow px-4 py-2 text-sm sm:text-base">
               <Plus className="w-4 h-4" />
               Create
             </Button>
           </Link>
         </div>
 
-        <Separator className="bg-gray-700" />
+        <Separator className="bg-white/40" />
 
         {flashcards.length === 0 ? (
           <p className="text-gray-400 text-center">No flashcards found. Create some!</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {flashcards.map((f) => (
               <Card
                 key={f._id}
-                className="bg-transparent border border-white/40 backdrop-blur-md transition hover:border-white/20"
+                className="flex flex-col justify-between bg-transparent border border-white/20 backdrop-blur-md shadow hover:border-white/40 transition p-4 sm:p-6"
               >
-                <CardHeader>
-                  <h2 className="text-lg font-semibold text-white">Q: {f.question}</h2>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-300 mb-4">
-                    <strong className="text-white">A:</strong> {f.answer}
-                  </p>
-                  <div className="flex gap-2">
-                    <Link href={`/dashboard/flashcards/edit/${f._id}`}>
-                      <Button
-                        size="sm"
-                        className="bg-white text-black hover:bg-gray-200 flex items-center gap-1"
-                      >
-                        <Pencil className="w-4 h-4" />
-                        Edit
-                      </Button>
-                    </Link>
-                    <Link href={`/dashboard/flashcards/delete/${f._id}`}>
-                      <Button
-                        size="sm"
-                        className="bg-white text-black hover:bg-gray-200 flex items-center gap-1"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                        Delete
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
+                <div>
+                  <CardHeader className="p-0 mb-2">
+                    <h2 className="text-lg sm:text-xl font-semibold text-white break-words">
+                      Q: {f.question}
+                    </h2>
+                  </CardHeader>
+                  <Separator className="bg-white/20 my-2" />
+                  <CardContent className="p-0 text-sm sm:text-base text-white/80 break-words">
+                    <p>
+                      <strong className="text-white">A:</strong> {f.answer}
+                    </p>
+                  </CardContent>
+                </div>
+                <div className="flex gap-2 pt-4">
+                  <Link href={`/dashboard/flashcards/edit/${f._id}`}>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="border border-white/40 hover:bg-white text-white hover:text-black flex items-center gap-2 w-full sm:w-auto"
+                    >
+                      <Pencil className="w-4 h-4" />
+                      Edit
+                    </Button>
+                  </Link>
+                  <Link href={`/dashboard/flashcards/delete/${f._id}`}>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="border border-red-500/30 hover:bg-red-500 text-red-400 hover:text-white flex items-center gap-2 w-full sm:w-auto"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                      Delete
+                    </Button>
+                  </Link>
+                </div>
               </Card>
             ))}
           </div>
