@@ -3,7 +3,7 @@
 import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Menu, Home, Calendar, LogOut,BookOpen,ClipboardList,BellRing } from 'lucide-react';
+import { Menu, Home, Calendar, LogOut,BookOpen,ClipboardList,BellRing,BarChart2 } from 'lucide-react';
 import { Toaster } from 'sonner';
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
@@ -64,6 +64,15 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 >
   <ClipboardList className="h-4 w-4" />
   <span>Study Planner</span>
+</Link>
+
+<Link
+  href="/dashboard/performance-analytics"
+  className="flex items-center gap-2 rounded px-3 py-2 hover:bg-white hover:text-black transition-colors"
+  onClick={() => setIsSidebarOpen(false)} // if you have sidebar toggle state
+>
+  <BarChart2 className="h-4 w-4" />
+  <span>Performance Analytics</span>
 </Link>
 
 

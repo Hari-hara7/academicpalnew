@@ -26,7 +26,9 @@ const showHomeHeader =
     "/dashboard/flashcards",
     "/dashboard/flashcards/create",
     "/dashboard/study-reminders",
-    "/dashboard/study-reminders/create"
+    "/dashboard/performance-analytics",
+    "/dashboard/study-reminders/create",
+    "/dashboard/performance-analytics/create"
   ].includes(pathname) ||////dashboard/study-planner/delete//dashboard/study-reminders/edit/
   pathname.startsWith("/dashboard/timetable/edit/") ||
   pathname.startsWith("/dashboard/timetable/delete/") ||  pathname.startsWith("/dashboard/flashcards/edit/") || 

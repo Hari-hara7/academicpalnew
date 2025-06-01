@@ -6,6 +6,11 @@ import { format } from 'date-fns';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import {
+  PlusCircle,
+  Pencil,
+  Trash2
+} from 'lucide-react'; // 👈 Import Lucide icons
 
 export default function StudyRemindersPage() {
   const [reminders, setReminders] = useState<StudyReminder[]>([]);
@@ -79,10 +84,11 @@ export default function StudyRemindersPage() {
             📅 Study Reminders
           </h2>
           <Button
-            className="bg-white text-black font-semibold hover:bg-gray-200"
+            className="bg-white text-black font-semibold hover:bg-gray-200 flex items-center gap-2"
             onClick={() => router.push('/dashboard/study-reminders/create')}
           >
-            ➕ Add Reminder
+            <PlusCircle className="w-5 h-5" />
+            Add Reminder
           </Button>
         </div>
 
@@ -106,19 +112,21 @@ export default function StudyRemindersPage() {
                   <div className="mt-5 flex gap-4">
                     <Button
                       variant="outline"
-                      className="bg-white text-black border-white hover:bg-gray-100"
+                      className="bg-white text-black border-white hover:bg-black-100 flex items-center gap-2"
                       onClick={() =>
                         router.push(`/dashboard/study-reminders/edit/${reminder._id}`)
                       }
                     >
-                      ✏️ Edit
+                      <Pencil className="w-4 h-4" />
+                      Edit
                     </Button>
                     <Button
                       variant="destructive"
-                      className="bg-white text-red-600 hover:bg-red-100"
+                      className="bg-white text-red-600 hover:bg-red-100 flex items-center gap-2"
                       onClick={() => handleDelete(reminder._id)}
                     >
-                      🗑️ Delete
+                      <Trash2 className="w-4 h-4" />
+                      Delete
                     </Button>
                   </div>
                 </CardContent>

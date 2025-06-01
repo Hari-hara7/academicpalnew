@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { Toaster, toast } from 'sonner'; 
 
 export default function DeleteReminderPage() {
   const router = useRouter();
@@ -21,22 +22,34 @@ export default function DeleteReminderPage() {
     setLoading(false);
 
     if (data.success) {
-      router.push('/dashboard/study-reminders');
+      toast.success('Reminder deleted successfully'); 
+      setTimeout(() => {
+        router.push('/dashboard/study-reminders');
+      }, 1200); // slight delay so toast shows before redirect
     } else {
-      alert('Failed to delete reminder.');
+      toast.error('Failed to delete reminder'); // ❌ Error toast
     }
   };
 
   return (
     <div className="max-w-md mx-auto p-6 text-center">
-      <h2 className="text-2xl font-bold mb-4">⚠️ Delete Study Reminder</h2>
-      <p className="mb-6">Are you sure you want to delete this reminder?</p>
+      <Toaster richColors position="top-center" /> {/* ✅ Toast container */}
+
+      <h2 className="text-2xl font-bold mb-4 text-red-600">⚠️ Delete Study Reminder</h2>
+      <p className="mb-6 text-gray-300">Are you sure you want to delete this reminder?</p>
 
       <div className="flex justify-center gap-4">
-        <Button variant="destructive" onClick={handleDelete} disabled={loading}>
+        <Button
+          variant="destructive"
+          onClick={handleDelete}
+          disabled={loading}
+        >
           {loading ? 'Deleting...' : 'Yes, Delete'}
         </Button>
-        <Button onClick={() => router.push('/dashboard/study-reminders')}>
+        <Button
+          variant="secondary"
+          onClick={() => router.push('/dashboard/study-reminders')}
+        >
           Cancel
         </Button>
       </div>
