@@ -2,8 +2,9 @@ import { cookies } from 'next/headers';
 import { verifyToken } from '@/lib/auth';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Sparkles, Share2, ArrowRight } from 'lucide-react';
+import { Sparkles, Share2, ArrowRight, BookOpen, CalendarCheck, BarChart3, BellRing, Newspaper, Users } from 'lucide-react';
 import { NeonGradientCard } from '@/components/magicui/neon-gradient-card';
+import Link from 'next/link';
 
 export default function DashboardHome() {
   const cookieStore = cookies();
@@ -18,6 +19,15 @@ export default function DashboardHome() {
   } catch {
     // fallback to guest
   }
+
+  const features = [
+    { name: 'Flashcards', icon: <BookOpen className="h-5 w-5" />, href: '/flashcards' },
+    { name: 'Study Planner', icon: <CalendarCheck className="h-5 w-5" />, href: '/study-planner' },
+    { name: 'Performance Analytics', icon: <BarChart3 className="h-5 w-5" />, href: '/analytics' },
+    { name: 'Study Reminders', icon: <BellRing className="h-5 w-5" />, href: '/reminders' },
+    { name: 'Blogs', icon: <Newspaper className="h-5 w-5" />, href: '/blogs' },
+    { name: 'Study Groups', icon: <Users className="h-5 w-5" />, href: '/groups' },
+  ];
 
   return (
     <section className="min-h-screen px-4 py-10 md:px-16 bg-black text-white">
@@ -43,7 +53,7 @@ export default function DashboardHome() {
         {/* Neon Card Announcement */}
         <NeonGradientCard>
           <div className="p-6 rounded-xl bg-[#0b0b0b] text-white shadow-xl">
-            <div className=" bg-[#0b0b0b]  flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-4">
               <Avatar>
                 <AvatarFallback className="bg-blue-700 text-white font-semibold">A</AvatarFallback>
               </Avatar>
@@ -71,6 +81,23 @@ export default function DashboardHome() {
             </div>
           </div>
         </NeonGradientCard>
+
+        {/* Dashboard Features Section */}
+        <div className="grid gap-6 sm:grid-cols-2">
+          {features.map((feature) => (
+            <Link key={feature.name} href={feature.href} className="bg-[#111] rounded-xl p-6 border border-blue-900 hover:shadow-lg transition hover:bg-[#151515]">
+              <div className="flex items-center gap-4">
+                <div className="p-2 bg-blue-700 rounded-full text-white">
+                  {feature.icon}
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">{feature.name}</h3>
+                  <p className="text-sm text-gray-400">Go to {feature.name}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

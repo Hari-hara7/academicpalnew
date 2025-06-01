@@ -4,8 +4,9 @@ import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Menu, Home, Calendar, LogOut,BookOpen,ClipboardList,BellRing,BarChart2 } from 'lucide-react';
-import { FaPenNib } from 'react-icons/fa';
+import { FaPenNib , FaUsers } from 'react-icons/fa';
 import { Toaster } from 'sonner';
+
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -94,6 +95,15 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   <FaPenNib className="h-4 w-4" />
   <span>Blogs</span>
 </Link>
+<Link
+  href="/dashboard/study-groups"
+  className="flex items-center gap-2 rounded px-3 py-2 hover:bg-white hover:text-black transition-colors"
+  onClick={() => setIsSidebarOpen(false)}
+>
+  <FaUsers className="h-4 w-4" />
+  <span>Study Groups</span>
+</Link>
+
 
           <form method="POST" action="/api/auth/logout" className="mt-4">
             <Button

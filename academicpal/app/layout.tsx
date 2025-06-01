@@ -23,20 +23,24 @@ const showHomeHeader =
     "/dashboard/study-planner",
     "/dashboard/timetable",
     "/dashboard/timetable/create",
+    "/dashboard/study-groups",
     "/dashboard/flashcards",
     "/dashboard/flashcards/create",
     "/dashboard/study-reminders",
+    "/dashboard/study-groups/create",
     "/dashboard/performance-analytics",
     "/dashboard/study-reminders/create",
     "/dashboard/blogs",
     "/dashboard/blogs/create",
     "/dashboard/performance-analytics/create"
-  ].includes(pathname) ||///dashboard/blogs/
+  ].includes(pathname) ||///dashboard/study-groups/
   pathname.startsWith("/dashboard/timetable/edit/") ||
   pathname.startsWith("/dashboard/timetable/delete/") ||  pathname.startsWith("/dashboard/flashcards/edit/") || 
    pathname.startsWith("/dashboard/study-planner/edit/") ||  pathname.startsWith("/dashboard/study-planner/delete/") || 
     pathname.startsWith("/dashboard/study-reminders/edit/")  || 
-    pathname.startsWith("/dashboard/blogs/");
+    pathname.startsWith("/dashboard/blogs/") || 
+    pathname.startsWith("/dashboard/study-groups/");
+;
 
 
 
