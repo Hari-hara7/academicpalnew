@@ -4,6 +4,7 @@ import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Menu, Home, Calendar, LogOut,BookOpen,ClipboardList,BellRing,BarChart2 } from 'lucide-react';
+import { FaPenNib } from 'react-icons/fa';
 import { Toaster } from 'sonner';
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
@@ -85,6 +86,14 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   <span>Study Reminders</span>
 </Link>
         
+<Link
+  href="/dashboard/blogs"
+  className="flex items-center gap-2 rounded px-3 py-2 hover:bg-white hover:text-black transition-colors"
+  onClick={() => setIsSidebarOpen(false)}
+>
+  <FaPenNib className="h-4 w-4" />
+  <span>Blogs</span>
+</Link>
 
           <form method="POST" action="/api/auth/logout" className="mt-4">
             <Button
