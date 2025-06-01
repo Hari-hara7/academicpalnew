@@ -34,7 +34,7 @@ export default function LoginPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-black px-4">
-      <Card className="w-full max-w-md border border-white/10 bg-black/50 backdrop-blur-md text-white shadow-lg">
+      <Card className="w-full max-w-md border border-white/40 bg-black/90 backdrop-blur-md text-white shadow-lg">
         <CardHeader className="flex flex-col items-center gap-2">
           <Image
             src="/academicpal.jpg" // Replace with your logo path

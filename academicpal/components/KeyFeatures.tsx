@@ -12,18 +12,24 @@ import {
   Search,
   UploadCloud,
   ArrowRightCircle,
+  Brain,
+  CalendarCheck,
+  BarChart4,
+  AlarmClock,
+  Users2,
+  CalendarDays
 } from 'lucide-react';
 import Link from 'next/link';
 
 const features = [
   {
-    title: '🌐 Community Support',
+    title: '📝 Blogs',
     description:
-      'Connect with a vibrant student community. Join discussions, get mentorship, and stay motivated with peers who share your passion.',
-    icon: Users,
+      'Read and write blogs on study strategies, academic tips, and personal experiences.',
+    icon: FileText,
     iconColor: 'text-pink-500',
-    link: '/community',
-    buttonText: 'Join Now',
+    link: '/register',
+    buttonText: 'Explore Blogs',
   },
   {
     title: '📚 Comprehensive Notes',
@@ -70,6 +76,61 @@ const features = [
     link: '/upload',
     buttonText: 'Upload or Explore',
   },
+  {
+    title: '🧠 Flashcards',
+    description:
+      'Memorize key concepts with interactive flashcards tailored to your subjects and topics.',
+    icon: Brain, // import from lucide-react or use your own icon
+    iconColor: 'text-purple-500',
+    link: '/register',
+    buttonText: 'Start Reviewing',
+  },
+  {
+    title: '🗓️ Study Planner',
+    description:
+      'Plan your study schedule efficiently with customizable timetables and task lists.',
+    icon: CalendarCheck,
+    iconColor: 'text-blue-500',
+    link: '/register',
+    buttonText: 'Plan Now',
+  },
+  {
+    title: '📊 Performance Analytics',
+    description:
+      'Track your study hours, identify weak areas, and visualize your progress with detailed charts.',
+    icon: BarChart4,
+    iconColor: 'text-green-500',
+    link: '/register',
+    buttonText: 'View Stats',
+  },
+  {
+    title: '⏰ Study Reminders',
+    description:
+      'Stay on track with personalized study notifications and reminders sent directly to your browser.',
+    icon: AlarmClock,
+    iconColor: 'text-yellow-500',
+    link: '/register',
+    buttonText: 'Set Reminders',
+  },
+ 
+  {
+    title: '👥 Study Groups',
+    description:
+      'Join or create study groups with like-minded peers to collaborate, discuss, and grow together.',
+    icon: Users2,
+    iconColor: 'text-pink-500',
+    link: '/register',
+    buttonText: 'Join a Group',
+  },
+ {
+    title: '📅 Timetable Generator',
+    description:
+      'Create and customize your academic timetable based on your course structure and preferences.',
+    icon: CalendarDays,
+    iconColor: 'text-indigo-500',
+    link: '/register',
+    buttonText: 'Generate Timetable',
+  }
 ];
 
 const KeyFeatures = () => {
