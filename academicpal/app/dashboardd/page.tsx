@@ -161,11 +161,11 @@ const Dashboard = () => {
 
   return (
     <main className="min-h-screen bg-black text-white p-6 md:px-20">
-      <h1 className="text-3xl md:text-4xl font-bold mb-8 flex items-center gap-2 justify-center mt-12">
+      <h1 className="text-2xl md:text-4xl font-bold mb-8 flex items-center gap-2 justify-center mt-12">
         <UserCircle className="w-8 h-8" /> Welcome, {user.displayName?.split(" ")[0]}!
       </h1>
 
-      <Card className="w-full max-w-md mx-auto bg-gray-900 text-white shadow-xl rounded-2xl border border-gray-700 mb-12">
+      <Card className="w-full max-w-md mx-auto bg-black-900 text-white shadow-xl rounded-2xl border border-gray-700 mb-12">
         <CardHeader className="flex flex-col items-center gap-4">
           <Image
             src={user.photoURL || "/default-profile.png"}
