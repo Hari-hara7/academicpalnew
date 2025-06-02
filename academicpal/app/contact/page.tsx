@@ -50,7 +50,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-black text-gray-100 py-12 px-4 md:px-12 lg:px-20">
       <section className="max-w-4xl mx-auto space-y-12">
         <header>
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 mt-4 md:mt-8">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 mt-4 md:mt-14">
             Contact <span className="text-white">AcademicPal</span>
           </h1>
           <p className="text-gray-300 text-base md:text-lg max-w-xl leading-relaxed">
