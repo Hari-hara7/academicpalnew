@@ -19,7 +19,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         <Button
           variant="outline"
           size="icon"
-          className="bg-white text-black hover:bg-gray-200"
+          className="bg-black text-white hover:bg-gray-200"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         >
           <Menu className="h-5 w-5" />
