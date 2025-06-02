@@ -84,7 +84,7 @@ export default function StudyRemindersPage() {
             📅 Study Reminders
           </h2>
           <Button
-            className="bg-white text-black font-semibold hover:bg-gray-200 flex items-center gap-2"
+            className="bg-white text-black font-semibold hover:bg-gray-200 flex items-center gap-2 mt-8"
             onClick={() => router.push('/dashboard/study-reminders/create')}
           >
             <PlusCircle className="w-5 h-5" />
@@ -111,8 +111,8 @@ export default function StudyRemindersPage() {
                   )}
                   <div className="mt-5 flex gap-4">
                     <Button
-                      variant="outline"
-                      className="bg-white text-black border-white hover:bg-black-100 flex items-center gap-2"
+                       variant="ghost"
+                    className="border border-white/40 hover:bg-white text-white flex items-center gap-2"
                       onClick={() =>
                         router.push(`/dashboard/study-reminders/edit/${reminder._id}`)
                       }
@@ -121,8 +121,8 @@ export default function StudyRemindersPage() {
                       Edit
                     </Button>
                     <Button
-                      variant="destructive"
-                      className="bg-white text-red-600 hover:bg-red-100 flex items-center gap-2"
+                       variant="ghost"
+                    className="border border-red-500/30 hover:bg-red-500 text-red-400 flex items-center gap-2"
                       onClick={() => handleDelete(reminder._id)}
                     >
                       <Trash2 className="w-4 h-4" />

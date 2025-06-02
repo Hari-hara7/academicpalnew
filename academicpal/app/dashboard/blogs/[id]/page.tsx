@@ -75,14 +75,14 @@ export default function BlogDetailsPage() {
 
   if (!blog) {
     return (
-      <div className="p-6 max-w-3xl mx-auto text-white text-center">
+      <div className="p-6 max-w-3xl mx-auto text-white text-center mt-8">
         Loading...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black p-6 flex justify-center">
+    <div className="min-h-screen bg-black p-6 flex justify-center mt-8">
       <div className="max-w-3xl w-full bg-black/80 border border-white/40 rounded-lg p-8 shadow-lg text-white">
         <h1 className="text-3xl font-bold mb-2">{blog.title}</h1>
         <p className="text-sm text-white/70 mb-6">

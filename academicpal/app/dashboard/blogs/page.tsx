@@ -28,20 +28,26 @@ export default function BlogListPage() {
 
   return (
     <div className="max-w-5xl mx-auto p-6 sm:p-10">
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-        <h1 className="text-3xl font-extrabold tracking-tight text-white">Blogs</h1>
-        <Button
-          variant="default"
-          size="md"
-          className="flex items-center gap-2"
-          onClick={() => router.push('/dashboard/blogs/create')}
-          aria-label="Create new blog"
-        >
-          <Plus className="w-5 h-5" />
-          New Blog
-        </Button>
-      </div>
+    {/* Header */}
+<div className="flex flex-row sm:flex-row justify-between items-center mb-8 gap-4">
+  <h1 className="text-3xl font-extrabold tracking-tight text-white whitespace-nowrap">
+    Blogs
+  </h1>
+  <Button
+    variant="default"
+    size="md"
+    className="flex items-center gap-2 whitespace-nowrap px-4 py-2 bg-white text-black hover:bg-gray-100 transition-colors rounded-lg shadow-md"
+    onClick={() => router.push('/dashboard/blogs/create')}
+    aria-label="Create new blog"
+  >
+    <Plus className="w-5 h-5" />
+    New Blog
+  </Button>
+</div>
 
+      
+
+      {/* Blog list */}
       <div className="space-y-6">
         {blogs.length === 0 && (
           <p className="text-center text-gray-300 text-lg">No blogs yet.</p>
@@ -59,8 +65,8 @@ export default function BlogListPage() {
             }}
           >
             <header className="flex items-center gap-3 mb-2">
-              <FileText className="w-6 h-6 text-white" />
-              <h2 className="text-2xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+              <FileText className="w-6 h-6 text-white flex-shrink-0" />
+              <h2 className="text-2xl font-semibold text-white group-hover:text-blue-400 transition-colors break-words">
                 {blog.title}
               </h2>
             </header>
@@ -72,7 +78,7 @@ export default function BlogListPage() {
                 day: 'numeric',
               })}
             </p>
-            <p className="mt-3 text-base leading-relaxed text-gray-200 line-clamp-3">
+            <p className="mt-3 text-base leading-relaxed text-gray-200 line-clamp-3 break-words">
               {blog.content}
             </p>
           </article>
