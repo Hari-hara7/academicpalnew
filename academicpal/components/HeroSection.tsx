@@ -69,7 +69,7 @@ export default function NewHero() {
             variant="outline"
             className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-2 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all w-full sm:w-auto"
           >
-            <Link href="/learn-more" className="flex items-center gap-2 w-full justify-center">
+            <Link href="/about" className="flex items-center gap-2 w-full justify-center">
               Learn More
             </Link>
           </Button>
