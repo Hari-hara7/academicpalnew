@@ -133,6 +133,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="keywords" content={currentSEO.keywords} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/academicpal.jpg" />
+        <link rel="manifest" href="/manifest.json" /> 
         {/* Open Graph tags for social sharing */}
         <meta property="og:title" content={currentSEO.title} />
         <meta property="og:description" content={currentSEO.description} />
