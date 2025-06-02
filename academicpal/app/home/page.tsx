@@ -13,9 +13,9 @@ import BottomNav from "@/components/BottomNav";
 
 export default function Home() {
   return (
-    <div className="bg-black text-white min-h-screen font-sans overflow-x-hidden"> {/* prevent horizontal scroll */}
+    <div className="bg-black text-white min-h-screen font-sans overflow-x-hidden"> 
       <NavBar />
-      <main className="pt-20 "> {/* responsive horizontal padding */}
+      <main className="pt-20 "> 
         <HeroSection />
         <KeyFeatures />
         <About />
