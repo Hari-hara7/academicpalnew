@@ -47,19 +47,19 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-gray-100 py-12 px-6 md:px-20">
-      <section className="max-w-3xl mx-auto space-y-8">
+    <main className="min-h-screen bg-black text-gray-100 py-12 px-4 md:px-12 lg:px-20">
+      <section className="max-w-4xl mx-auto space-y-12">
         <header>
-          <h1 className="text-5xl font-extrabold tracking-tight mb-4 mt-8">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 mt-4 md:mt-8">
             Contact <span className="text-white">AcademicPal</span>
           </h1>
-          <p className="text-gray-300 text-lg max-w-lg leading-relaxed">
+          <p className="text-gray-300 text-base md:text-lg max-w-xl leading-relaxed">
             Have questions, feedback, or want to contribute? Reach out to us — we’re here to help!
           </p>
         </header>
 
         <Card className="bg-black border border-white/20 backdrop-blur-md rounded-lg shadow-md">
-          <CardContent className="p-8">
+          <CardContent className="p-6 md:p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <Label htmlFor="name" className="text-gray-300">
@@ -73,7 +73,7 @@ export default function ContactPage() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-transparent border border-white/30 text-white placeholder-gray-400 mt-4"
+                  className="bg-transparent border border-white/30 text-white placeholder-gray-400 mt-2"
                 />
               </div>
 
@@ -89,7 +89,7 @@ export default function ContactPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="bg-transparent border border-white/30 text-white placeholder-gray-400 mt-4"
+                  className="bg-transparent border border-white/30 text-white placeholder-gray-400 mt-2"
                 />
               </div>
 
@@ -105,7 +105,7 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="bg-transparent border border-white/30 text-white placeholder-gray-400 mt-4"
+                  className="bg-transparent border border-white/30 text-white placeholder-gray-400 mt-2"
                 />
               </div>
 
@@ -118,7 +118,7 @@ export default function ContactPage() {
 
               <Button
                 type="submit"
-                className="bg-gray-200 text-black hover:bg-gray-300 transition"
+                className="bg-gray-200 text-black hover:bg-gray-300 transition w-full md:w-auto"
                 disabled={loading}
               >
                 {loading ? "Sending..." : "Send Message"}
@@ -130,44 +130,42 @@ export default function ContactPage() {
         <Separator className="border-gray-700" />
 
         <section>
-          <h2 className="text-3xl font-semibold mb-6">Other Ways to Reach Us</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-6">Other Ways to Reach Us</h2>
           <ul className="space-y-4 text-gray-300">
             <li className="flex items-center gap-3">
-              <Mail className="w-6 h-6 text-white/80" />
-              <a href="mailto:support@academicpal.com" className="underline hover:text-white transition">
+              <Mail className="w-5 h-5 md:w-6 md:h-6 text-white/80" />
+              <a href="mailto:support@academicpal.com" className="underline hover:text-white transition text-sm md:text-base">
                 hariharanath247@gmail.com
               </a>
             </li>
             <li className="flex items-center gap-3">
-              <Phone className="w-6 h-6 text-white/80" />
-              <a href="tel:+1234567890" className="underline hover:text-white transition">
+              <Phone className="w-5 h-5 md:w-6 md:h-6 text-white/80" />
+              <a href="tel:+919789777877" className="underline hover:text-white transition text-sm md:text-base">
                 +91 7989777877
               </a>
             </li>
             <li className="flex items-center gap-3">
-              <MapPin className="w-6 h-6 text-white/80" />
-              <address className="not-italic">
-                Karkala,Nitte,Karanataka
+              <MapPin className="w-5 h-5 md:w-6 md:h-6 text-white/80" />
+              <address className="not-italic text-sm md:text-base">
+                Karkala, Nitte, Karnataka
               </address>
             </li>
           </ul>
         </section>
 
-        {/* Call to action buttons */}
-        <div className="flex flex-wrap gap-4 mt-12">
+        <div className="flex flex-col md:flex-row flex-wrap gap-4 mt-10">
           <Link href="/" passHref>
             <Button
-              as="/home"
               variant="outline"
-              className="bg-gray-200 text-black hover:bg-gray-300 transition"
+              className="bg-gray-200 text-black hover:bg-gray-300 transition w-full md:w-auto"
             >
               Go to Homepage
             </Button>
           </Link>
           <Link href="/about" passHref>
             <Button
-              as="a"
-              className="bg-gray-200 text-black hover:bg-gray-300 transition"
+              variant="outline"
+              className="bg-gray-200 text-black hover:bg-gray-300 transition w-full md:w-auto"
             >
               About AcademicPal
             </Button>
