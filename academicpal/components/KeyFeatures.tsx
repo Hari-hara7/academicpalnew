@@ -37,7 +37,7 @@ const features = [
       'Access crisp, well-organized notes for all subjects. Designed for clarity and speed, these notes help you revise smarter before exams.',
     icon: NotebookText,
     iconColor: 'text-purple-500',
-    link: '/notes',
+    link: 'https://academicpal.vercel.app/notes.html',
     buttonText: 'Access Notes',
   },
   {
@@ -46,7 +46,7 @@ const features = [
       'Prepare with confidence using past papers. Understand frequently asked questions and get familiar with real exam patterns.',
     icon: FileText,
     iconColor: 'text-orange-500',
-    link: '/past-papers',
+    link: 'https://academicpal.vercel.app/Pyq.html',
     buttonText: 'View Papers',
   },
   {

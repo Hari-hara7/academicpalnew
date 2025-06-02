@@ -3,17 +3,18 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Home, BookOpen, User, Settings, MessageCircle } from "lucide-react";
+import { Home, BookOpen, User, Wrench, MessageCircle } from "lucide-react";
 
 export default function BottomNav() {
   const pathname = usePathname();
 
   const navItems = [
     { href: "/home", icon: Home, label: "Home" },
-    { href: "/notes", icon: BookOpen, label: "Notes" },
-    { href: "/messages", icon: MessageCircle, label: "Messages" },
-    { href: "/profile", icon: User, label: "Profile" },
-    { href: "/settings", icon: Settings, label: "Settings" },
+    { href: "https://academicpal.vercel.app/notes.html", icon: BookOpen, label: "Notes" },
+    { href: "/chat", icon: MessageCircle, label: "Messages" },
+    { href: "/dashboardd", icon: User, label: "Profile" },
+    { href: "/login", icon: Wrench, label: "Tools" },
+
   ];
 
   return (
