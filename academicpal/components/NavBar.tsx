@@ -53,8 +53,8 @@ const NavBar = () => {
     <nav className="bg-black text-white fixed top-0 left-0 w-full z-50 shadow-md font-sans">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <Image src="/academicpal.jpg" alt="Academicpal Logo" width={42} height={42} className="rounded-md" />
+        <Link href="/home" className="flex items-center gap-3">
+          <Image src="/academicpal.jpg" alt="Academicpal Logo" width={70} height={70} className="rounded-md" />
           <span className="text-xl font-semibold tracking-tight leading-tight font-[Poppins]">
             Academicpal
           </span>
