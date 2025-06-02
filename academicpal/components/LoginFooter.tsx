@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, ShieldCheck, Phone } from "lucide-react";
 
 const LoginFooter: FC = () => {
   return (
@@ -11,7 +11,7 @@ const LoginFooter: FC = () => {
           <Image
             src="/academicpal.jpg"  // Replace with your actual logo file name and extension
             alt="Academic Pal Logo"
-            width={60}       // Adjust width & height as needed
+            width={60}
             height={60}
             priority
             className="object-contain"
@@ -19,43 +19,44 @@ const LoginFooter: FC = () => {
           <span className="text-2xl font-semibold tracking-wide">Academic Pal</span>
         </div>
 
-        {/* Navigation Links */}
+        {/* Navigation Links with icons */}
         <nav className="flex flex-wrap justify-center md:justify-start gap-6 text-sm md:text-base">
           <a
             href="/privacy-policy"
-            className="text-white/80 hover:text-white transition-colors duration-200 font-medium"
+            className="flex items-center gap-1 text-white/80 hover:text-white transition-colors duration-200 font-medium"
           >
+            <ShieldCheck className="w-4 h-4" />
             Privacy Policy
           </a>
           <a
             href="/terms-and-conditions"
-            className="text-white/80 hover:text-white transition-colors duration-200 font-medium"
+            className="flex items-center gap-1 text-white/80 hover:text-white transition-colors duration-200 font-medium"
           >
+            <FileText className="w-4 h-4" />
             Terms & Conditions
           </a>
-          <a
-            href="/logincontact"
-            className="text-white/80 hover:text-white transition-colors duration-200 font-medium"
-          >
-            Contact
-          </a>
+          
         </nav>
 
         {/* Social Icons */}
         <div className="flex justify-center md:justify-end gap-6">
-          {[{
-            href: "mailto:hariharanath247@gmail.com",
-            label: "Email",
-            icon: <Mail className="w-6 h-6 text-white" />
-          }, {
-            href: "https://github.com/Academic-pal",
-            label: "GitHub",
-            icon: <Github className="w-6 h-6 text-white" />
-          }, {
-            href: "https://www.linkedin.com/company/102724699/admin/dashboard/",
-            label: "LinkedIn",
-            icon: <Linkedin className="w-6 h-6 text-white" />
-          }].map(({href, label, icon}) => (
+          {[
+            {
+              href: "mailto:hariharanath247@gmail.com",
+              label: "Email",
+              icon: <Mail className="w-6 h-6 text-white" />,
+            },
+            {
+              href: "https://github.com/Academic-pal",
+              label: "GitHub",
+              icon: <Github className="w-6 h-6 text-white" />,
+            },
+            {
+              href: "https://www.linkedin.com/company/102724699/admin/dashboard/",
+              label: "LinkedIn",
+              icon: <Linkedin className="w-6 h-6 text-white" />,
+            },
+          ].map(({ href, label, icon }) => (
             <a
               key={label}
               href={href}
