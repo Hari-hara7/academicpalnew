@@ -10,11 +10,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
 import { Loader2, User, Mail, BookOpen, Calendar, UserCircle, Pencil } from "lucide-react";
 
 // Feedback type
@@ -29,6 +25,45 @@ interface Feedback {
   createdAt: any;
 }
 
+// Feedback Form State Type
+interface FeedbackFormState {
+  name: string;
+  usn: string;
+  email: string;
+  branch: string;
+  year: string;
+  message: string;
+}
+
+// InputWithIcon component
+const InputWithIcon = ({
+  icon: Icon,
+  placeholder,
+  name,
+  value,
+  onChange,
+  type = "text",
+}: {
+  icon: React.ElementType;
+  placeholder: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
+}) => (
+  <div className="relative">
+    <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
+    <input
+      placeholder={placeholder}
+      name={name}
+      value={value}
+      onChange={onChange}
+      type={type}
+      className="pl-10 bg-black border border-gray-700 text-white focus:border-white rounded-md w-full py-2 px-3 transition-colors"
+    />
+  </div>
+);
+
 // Feedback Form Component
 function FeedbackForm({
   onSubmit,
@@ -38,35 +73,17 @@ function FeedbackForm({
 }: {
   onSubmit: () => void;
   form: FeedbackFormState;
-  setForm: (value: FeedbackFormState) => void;
+  setForm: React.Dispatch<React.SetStateAction<FeedbackFormState>>;
   submitting: boolean;
 }) {
+  // Use functional state update to avoid focus loss
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
-
-  const InputWithIcon = ({
-    icon: Icon,
-    ...rest
-  }: {
-    icon: React.ElementType;
-    placeholder: string;
-    name: string;
-    value: string;
-    onChange: (e: any) => void;
-    type?: string;
-  }) => (
-    <div className="relative">
-      <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
-      <Input
-        {...rest}
-        className="pl-10 bg-black border-gray-700 text-white focus:border-white transition-colors"
-      />
-    </div>
-  );
 
   return (
     <motion.div
@@ -114,23 +131,23 @@ function FeedbackForm({
       />
       <div className="relative">
         <Pencil className="absolute left-3 top-3 text-gray-500" size={18} />
-        <Textarea
+        <textarea
           placeholder="Your feedback..."
           name="message"
           value={form.message}
           onChange={handleChange}
           rows={4}
-          className="pl-10 bg-black border-gray-700 text-white focus:border-white transition-colors"
+          className="pl-10 bg-black border border-gray-700 text-white focus:border-white rounded-md w-full py-2 px-3 transition-colors resize-none"
         />
       </div>
-      <Button
+      <button
         onClick={onSubmit}
         disabled={submitting}
-        className="w-full bg-white text-black font-semibold hover:bg-gray-300 transition-colors"
+        className="w-full bg-white text-black font-semibold hover:bg-gray-300 transition-colors py-2 rounded-md flex justify-center items-center"
       >
         {submitting && <Loader2 className="animate-spin h-4 w-4 mr-2" />}
         {submitting ? "Submitting..." : "Submit Feedback"}
-      </Button>
+      </button>
     </motion.div>
   );
 }
@@ -149,7 +166,7 @@ function FeedbackList({ feedbacks }: { feedbacks: Feedback[] }) {
         <p className="text-gray-400 text-center">No feedback yet.</p>
       ) : (
         feedbacks.map((fb) => (
-          <Card
+          <div
             key={fb.id}
             className="bg-neutral-950 border border-gray-800 p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
           >
@@ -167,22 +184,12 @@ function FeedbackList({ feedbacks }: { feedbacks: Feedback[] }) {
               <Mail size={12} />
               {fb.email}
             </p>
-            <p className="text-white mt-2">{fb.message}</p>
-          </Card>
+            <p className="text-white mt-2 whitespace-pre-wrap">{fb.message}</p>
+          </div>
         ))
       )}
     </motion.div>
   );
-}
-
-// Feedback Form State Type
-interface FeedbackFormState {
-  name: string;
-  usn: string;
-  email: string;
-  branch: string;
-  year: string;
-  message: string;
 }
 
 // Main Feedback Section Component
@@ -205,26 +212,28 @@ export default function FeedbackSection() {
       return;
     }
     setSubmitting(true);
-    await addDoc(collection(db, "feedbacks"), {
-      ...form,
-      createdAt: serverTimestamp(),
-    });
-    setForm({
-      name: "",
-      usn: "",
-      email: "",
-      branch: "",
-      year: "",
-      message: "",
-    });
+    try {
+      await addDoc(collection(db, "feedbacks"), {
+        ...form,
+        createdAt: serverTimestamp(),
+      });
+      setForm({
+        name: "",
+        usn: "",
+        email: "",
+        branch: "",
+        year: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+      alert("Failed to submit feedback. Please try again.");
+    }
     setSubmitting(false);
   };
 
   useEffect(() => {
-    const q = query(
-      collection(db, "feedbacks"),
-      orderBy("createdAt", "desc")
-    );
+    const q = query(collection(db, "feedbacks"), orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const feedbackArray: Feedback[] = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -236,7 +245,7 @@ export default function FeedbackSection() {
   }, []);
 
   return (
-    <section className="bg-black text-white py-20 px-4 max-w-5xl mx-auto">
+    <section className="bg-black text-white py-12 px-4 max-w-5xl mx-auto">
       <motion.h2
         className="text-4xl font-bold text-center mb-10"
         initial={{ opacity: 0, y: 30 }}
@@ -247,13 +256,8 @@ export default function FeedbackSection() {
         Student Feedback
       </motion.h2>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        <FeedbackForm
-          onSubmit={submitFeedback}
-          form={form}
-          setForm={setForm}
-          submitting={submitting}
-        />
+      <div className="grid gap-8 md:grid-cols-2">
+        <FeedbackForm onSubmit={submitFeedback} form={form} setForm={setForm} submitting={submitting} />
         <FeedbackList feedbacks={feedbacks} />
       </div>
     </section>

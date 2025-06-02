@@ -74,9 +74,9 @@ export default function SupportAndHelp() {
   );
 
   return (
-    <section className="bg-black text-white py-20 px-4 max-w-5xl mx-auto">
+    <section className="bg-black text-white py-12 px-4 max-w-5xl mx-auto">
       <motion.h2
-        className="text-4xl font-bold text-center mb-4"
+        className="text-3xl sm:text-4xl font-bold text-center mb-4"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -86,7 +86,7 @@ export default function SupportAndHelp() {
       </motion.h2>
 
       <motion.p
-        className="text-center text-gray-400 mb-10 max-w-md mx-auto flex items-center justify-center gap-2"
+        className="text-center text-gray-400 mb-8 max-w-md mx-auto flex items-center justify-center gap-2 text-sm sm:text-base"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -96,7 +96,7 @@ export default function SupportAndHelp() {
         Need assistance? We’re here to help! Submit your support request below.
       </motion.p>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Support Form */}
         <motion.div
           className="space-y-4"
@@ -106,7 +106,7 @@ export default function SupportAndHelp() {
           transition={{ duration: 0.6 }}
         >
           <Card className="bg-black border border-gray-800 shadow-md rounded-xl">
-            <CardContent className="p-6 space-y-4">
+            <CardContent className="p-4 sm:p-6 space-y-4">
               <InputWithIcon
                 icon={User}
                 placeholder="Your Name"
@@ -137,7 +137,7 @@ export default function SupportAndHelp() {
                   value={form.description}
                   onChange={handleChange}
                   rows={4}
-                  className="pl-10 bg-black border-gray-700 text-white focus:border-white transition-colors"
+                  className="pl-10 bg-black border-gray-700 text-white focus:border-white transition-colors resize-none"
                 />
               </div>
               <Button
@@ -152,36 +152,35 @@ export default function SupportAndHelp() {
           </Card>
         </motion.div>
 
-       {/* Crazy Side Display */}
-<motion.div
-  className=" bg-black border border-gray-800 flex flex-col gap-4 justify-center items-center text-center"
-  initial={{ opacity: 0, x: 30 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
->
-  <motion.div
-    animate={{ rotate: [0, 360] }}
-    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-    className="p-4 rounded-full border border-white"
-  >
-    <Zap className="text-white" size={40} />
-  </motion.div>
-  <p className="text-lg font-semibold text-white">Lightning-Fast Support</p>
-  <p className="text-gray-400 max-w-sm">
-    Our team is always on standby to zap away your issues ⚡️. Expect a quick response!
-  </p>
+        {/* Crazy Side Display */}
+        <motion.div
+          className="bg-black border border-gray-800 flex flex-col gap-4 justify-center items-center text-center p-6 rounded-xl"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+            className="p-4 rounded-full border border-white"
+          >
+            <Zap className="text-white" size={40} />
+          </motion.div>
+          <p className="text-lg font-semibold text-white">Lightning-Fast Support</p>
+          <p className="text-gray-400 max-w-xs sm:max-w-sm text-sm sm:text-base">
+            Our team is always on standby to zap away your issues ⚡️. Expect a quick response!
+          </p>
 
-  <motion.div
-    animate={{ y: [0, -10, 0] }}
-    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-    className="mt-6"
-  >
-    <Smile className="text-white" size={40} />
-    <p className="mt-2 text-white font-bold">Stay Positive & Let’s Fix It! 🎉</p>
-  </motion.div>
-</motion.div>
-
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="mt-6"
+          >
+            <Smile className="text-white" size={40} />
+            <p className="mt-2 text-white font-bold text-sm sm:text-base">Stay Positive & Let’s Fix It! 🎉</p>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
