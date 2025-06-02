@@ -21,12 +21,12 @@ export default function DashboardHome() {
   }
 
   const features = [
-    { name: 'Flashcards', icon: <BookOpen className="h-5 w-5" />, href: '/flashcards' },
-    { name: 'Study Planner', icon: <CalendarCheck className="h-5 w-5" />, href: '/study-planner' },
-    { name: 'Performance Analytics', icon: <BarChart3 className="h-5 w-5" />, href: '/analytics' },
-    { name: 'Study Reminders', icon: <BellRing className="h-5 w-5" />, href: '/reminders' },
-    { name: 'Blogs', icon: <Newspaper className="h-5 w-5" />, href: '/blogs' },
-    { name: 'Study Groups', icon: <Users className="h-5 w-5" />, href: '/groups' },
+    { name: 'Flashcards', icon: <BookOpen className="h-5 w-5" />, href: '/dashboard/flashcards' },
+    { name: 'Study Planner', icon: <CalendarCheck className="h-5 w-5" />, href: '/dashboard/study-planner' },
+    { name: 'Performance Analytics', icon: <BarChart3 className="h-5 w-5" />, href: '/dashboard/performance-analytics' },
+    { name: 'Study Reminders', icon: <BellRing className="h-5 w-5" />, href: '/dashboard/study-reminders' },
+    { name: 'Blogs', icon: <Newspaper className="h-5 w-5" />, href: '/dashboard/blogs' },
+    { name: 'Study Groups', icon: <Users className="h-5 w-5" />, href: '/dashboard/study-groups' },
   ];
 
   return (
