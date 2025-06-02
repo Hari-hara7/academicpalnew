@@ -23,18 +23,17 @@ const steps = [
   },
   {
     title: "Achieve Better Grades",
-    description:
-      "Leverage all features to boost your understanding and ace your exams!",
+    description: "Leverage all features to boost your understanding and ace your exams!",
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="bg-black text-white py-20 px-6 max-w-7xl mx-auto">
-      <h2 className="text-center text-4xl font-extrabold mb-12 tracking-tight drop-shadow-md">
+    <section className="bg-black text-white py-16 px-4 sm:px-6 max-w-7xl mx-auto">
+      <h2 className="text-center text-3xl sm:text-4xl font-extrabold mb-10 tracking-tight drop-shadow-md">
         How AcademicPal Works
       </h2>
-      <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {steps.map((step, idx) => (
           <motion.div
             key={step.title}
@@ -42,17 +41,17 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.15 }}
-            className="flex flex-col items-center bg-neutral-900 rounded-2xl p-6 shadow-lg shadow-blue-800/30 hover:shadow-blue-600/60 transition-shadow"
+            className="flex flex-col items-center bg-neutral-900 rounded-2xl p-4 sm:p-6 shadow-lg shadow-blue-800/30 hover:shadow-blue-600/60 transition-shadow"
           >
-            <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white text-xl font-bold drop-shadow-lg mb-4 select-none">
+            <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white text-lg sm:text-xl font-bold drop-shadow-lg mb-3 sm:mb-4 select-none">
               {idx + 1}
             </div>
-            <CardTitle className="text-lg text-center">{step.title}</CardTitle>
-            <CardContent className="p-0 mt-2 text-center text-gray-300 text-sm">
+            <CardTitle className="text-sm sm:text-base text-center">{step.title}</CardTitle>
+            <CardContent className="p-0 mt-1 sm:mt-2 text-center text-gray-300 text-xs sm:text-sm">
               {step.description}
             </CardContent>
             <CheckCircle
-              className="mt-5 w-7 h-7 text-blue-400 opacity-70"
+              className="mt-4 w-5 h-5 sm:w-6 sm:h-6 text-blue-400 opacity-70"
               aria-hidden="true"
             />
           </motion.div>

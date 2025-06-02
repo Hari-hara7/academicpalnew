@@ -17,7 +17,7 @@ export default function BottomNav() {
   ];
 
   return (
-    <nav className="fixed bottom-0 inset-x-0 bg-black border-t border-neutral-800 flex justify-between px-4 py-2 z-50 shadow-lg md:hidden">
+    <nav className="fixed bottom-0 inset-x-0 bg-black/80 backdrop-blur-md border-t border-neutral-800 flex justify-around px-2 py-1 sm:px-4 sm:py-2 z-50 shadow-lg md:hidden">
       {navItems.map((item) => {
         const isActive = pathname === item.href;
         const Icon = item.icon;
@@ -27,15 +27,18 @@ export default function BottomNav() {
             key={item.href}
             href={item.href}
             className={cn(
-              "flex flex-col items-center text-xs font-bold transition-colors",
-              isActive ? "text-white" : "text-white-400 hover:text-white"
+              "flex flex-col items-center text-[10px] sm:text-xs font-medium transition-colors duration-200",
+              isActive ? "text-white" : "text-neutral-400 hover:text-white"
             )}
           >
             <Icon
-              size={24}
-              className="mb-0.5 transition-transform duration-300 ease-in-out text-white"
+              size={20}
+              className={cn(
+                "mb-0.5 transition-transform duration-300 ease-in-out",
+                isActive ? "text-white" : "text-neutral-400"
+              )}
             />
-            <span>{item.label}</span>
+            <span className="truncate">{item.label}</span>
           </Link>
         );
       })}
