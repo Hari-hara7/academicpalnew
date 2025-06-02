@@ -70,7 +70,7 @@ const MLTechIcon = ({ tech }: { tech: string }) => mlTechIcons[tech] || null;
           <p className="text-base sm:text-lg text-gray-300 max-w-2xl leading-relaxed">
             AcademicPal is a powerful academic companion used by{" "}
             <span className="font-semibold">4,000+ students</span> at NMAMIT. It
-            provides curated notes, solved PYQs, AI-powered search, real-time
+            provides curated notes,  PYQs, AI-powered search, real-time
             chat, and more — all in one place.
           </p>
         </header>
