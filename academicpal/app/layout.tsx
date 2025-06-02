@@ -36,13 +36,14 @@ const showHomeHeader =
     "/dashboard/performance-analytics/create",
     "/about",
     "/dashboardd"
-  ].includes(pathname) ||///dashboard/study-groups/
+  ].includes(pathname) ||///dashboard/performance-analytics/edit/
   pathname.startsWith("/dashboard/timetable/edit/") ||
   pathname.startsWith("/dashboard/timetable/delete/") ||  pathname.startsWith("/dashboard/flashcards/edit/") || 
    pathname.startsWith("/dashboard/study-planner/edit/") ||  pathname.startsWith("/dashboard/study-planner/delete/") || 
     pathname.startsWith("/dashboard/study-reminders/edit/")  || 
     pathname.startsWith("/dashboard/blogs/") || 
-    pathname.startsWith("/dashboard/study-groups/");
+    pathname.startsWith("/dashboard/study-groups/") || 
+    pathname.startsWith("/dashboard/performance-analytics/edit/");
 ;
 
 

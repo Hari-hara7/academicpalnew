@@ -65,7 +65,7 @@ export default function PerformanceAnalytics() {
   }));
 
   return (
-    <div className="p-6">
+    <div className="p-9">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-semibold">Performance & Analytics</h1>
         <Button onClick={() => router.push('/dashboard/performance-analytics/create')}>

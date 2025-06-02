@@ -28,7 +28,7 @@ export default function EditStudySession() {
       if (target) {
         setForm({
           ...target,
-          date: target.date.slice(0, 10), // format date for input
+          date: target.date.slice(0, 10),
         });
       }
     };
@@ -62,42 +62,59 @@ export default function EditStudySession() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white rounded shadow mt-8">
-      <h1 className="text-2xl font-semibold mb-4">Edit Study Session</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <Label htmlFor="subject">Subject</Label>
-          <Input name="subject" value={form.subject} onChange={handleChange} required />
-        </div>
-        <div>
-          <Label htmlFor="hours">Hours Studied</Label>
-          <Input
-            type="number"
-            name="hours"
-            value={form.hours}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <Label htmlFor="date">Date</Label>
-          <Input type="date" name="date" value={form.date} onChange={handleChange} required />
-        </div>
-        <div>
-          <Label htmlFor="performance">Performance (1–10)</Label>
-          <Input
-            type="number"
-            name="performance"
-            min={1}
-            max={10}
-            value={form.performance || ''}
-            onChange={handleChange}
-          />
-        </div>
-        <Button type="submit" className="w-full">
-          Update
-        </Button>
-      </form>
+    <div className="min-h-screen bg-black flex items-center justify-center p-4">
+      <div className="max-w-xl w-full p-6 rounded-xl shadow-lg bg-black backdrop-blur-md border border-white/20 text-white">
+        <h1 className="text-2xl font-semibold mb-4 text-center">Edit Study Session</h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <Label htmlFor="subject" className="text-white/80">Subject</Label>
+            <Input
+              name="subject"
+              value={form.subject}
+              onChange={handleChange}
+              required
+              className="bg-black/30 text-white border-white/30 mt-4"
+            />
+          </div>
+          <div>
+            <Label htmlFor="hours" className="text-white/80">Hours Studied</Label>
+            <Input
+              type="number"
+              name="hours"
+              value={form.hours}
+              onChange={handleChange}
+              required
+              className="bg-black/30 text-white border-white/30 mt-4"
+            />
+          </div>
+          <div>
+            <Label htmlFor="date" className="text-white/80">Date</Label>
+            <Input
+              type="date"
+              name="date"
+              value={form.date}
+              onChange={handleChange}
+              required
+              className="bg-black/30 text-white border-white/30 mt-4"
+            />
+          </div>
+          <div>
+            <Label htmlFor="performance" className="text-white/80">Performance (1–10)</Label>
+            <Input
+              type="number"
+              name="performance"
+              min={1}
+              max={10}
+              value={form.performance || ''}
+              onChange={handleChange}
+              className="bg-black/30 text-white border-white/30 mt-4"
+            />
+          </div>
+          <Button type="submit" className="w-full bg-white hover:bg-white text-black">
+            Update
+          </Button>
+        </form>
+      </div>
     </div>
   );
 }

@@ -4,14 +4,10 @@ import { Toaster } from 'sonner';
 
 export default function FlashcardsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
-      <nav className="mb-4 mt-12">
-        <Link href="/dashboard/flashcards">All Flashcards</Link> |{' '}
-        <Link href="/dashboard/flashcards/create">Create New</Link>
-       
-      </nav>
+    <div className="flex flex-col min-h-screen p-4 font-sans bg-black text-white">
+      
       <Toaster position="top-center" richColors />
-      <main>{children}</main>
+      <main className="flex-1 w-full max-w-4xl mx-auto">{children}</main>
     </div>
   );
 }

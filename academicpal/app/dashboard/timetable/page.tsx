@@ -38,10 +38,10 @@ export default function TimetableListPage() {
     <div className="min-h-screen bg-black text-white px-4 py-10 font-inter">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex justify-between items-center mb-10 flex-wrap gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">Your Timetables</h1>
-          <Link href="/dashboard/timetable/create">
-            <Button className="bg-white text-black font-medium hover:bg-gray-100 transition flex items-center gap-2 px-5 py-2 rounded-xl shadow-lg">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Your Timetables</h1>
+          <Link href="/dashboard/timetable/create" className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto bg-white text-black font-medium hover:bg-gray-100 transition flex items-center justify-center sm:justify-start gap-2 px-5 py-2 rounded-xl shadow-lg">
               <CalendarPlus className="w-4 h-4" />
               Create New
             </Button>
@@ -54,22 +54,22 @@ export default function TimetableListPage() {
             timetables.map((tt) => (
               <Card
                 key={tt._id}
-                className="bg-transparent border border-white/20 backdrop-blur-md shadow-md"
+                className="bg-transparent border border-white/20 backdrop-blur-md shadow-md hover:scale-[1.01] transition-transform"
               >
                 <CardHeader>
-                  <div className="flex justify-between items-center">
-                    <h2 className="text-xl font-semibold text-white">{tt.title}</h2>
-                    <Badge className="bg-white/10 text-white border border-white/40">
+                  <div className="flex justify-between items-center gap-2 flex-wrap">
+                    <h2 className="text-lg md:text-xl font-semibold text-white break-words">{tt.title}</h2>
+                    <Badge className="bg-white/10 text-white border border-white/40 whitespace-nowrap">
                       {tt.days.length} days
                     </Badge>
                   </div>
                 </CardHeader>
                 <Separator className="bg-white/40" />
-                <CardContent className="space-y-3 pt-4 text-white/90">
+                <CardContent className="space-y-3 pt-4 text-white/90 text-sm sm:text-base">
                   {tt.days.map((day, dIdx) => (
                     <div key={dIdx} className="space-y-1">
                       <h3 className="text-white/80 font-medium">{day.day}</h3>
-                      <ul className="ml-4 list-disc text-sm text-white/60">
+                      <ul className="ml-4 list-disc text-white/60">
                         {day.subjects.map((subject, sIdx) => (
                           <li key={sIdx}>
                             <span className="text-white font-medium">{subject.name}</span> —{' '}
@@ -79,7 +79,7 @@ export default function TimetableListPage() {
                       </ul>
                     </div>
                   ))}
-                  <div className="flex gap-3 pt-2">
+                  <div className="flex flex-wrap gap-3 pt-2">
                     <Link href={`/dashboard/timetable/edit/${tt._id}`}>
                       <Button
                         size="sm"
