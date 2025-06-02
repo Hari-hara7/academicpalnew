@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import HomeHeader from "../components/NavBar";
 import HomeFooter from "../components/Footerhome";
 import BottomNav from "../components/BottomNav";
+import Loginfooter from "../components/LoginFooter";
 import "./globals.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -154,7 +155,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {pathname === "/home" && <BottomNav />}
 
-        {pathname !== "/home" && <HomeFooter />}
+{!["/", "/signup", "/home"].includes(pathname) && <HomeFooter />}
+
+
+         {pathname === "/" && <Loginfooter />}
+          {pathname === "/signup" && <Loginfooter />}
       </body>
     </html>
   );
