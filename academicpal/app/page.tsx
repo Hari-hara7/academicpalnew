@@ -70,7 +70,7 @@ const Login = () => {
     }
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push('https://academicpal.vercel.app/');
+      router.push('/home');
     } catch (err: any) {
       if (err.message.includes('wrong-password') || err.message.includes('user-not-found')) {
         setError('Incorrect credentials. Please sign up if you don\'t have an account.');
