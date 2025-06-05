@@ -17,6 +17,7 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import Link from 'next/link';
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const router = useRouter();
@@ -93,7 +94,7 @@ const Login = () => {
               className="w-full bg-white text-black hover:bg-gray-200"
               onClick={handleGoogleSignIn}
             >
-              <FaGoogle className="mr-2" />
+              <FcGoogle className="mr-2" />
               Sign in with Google
             </Button>
             <Button

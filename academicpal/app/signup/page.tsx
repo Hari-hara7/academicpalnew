@@ -15,6 +15,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { FcGoogle } from "react-icons/fc";
 import Link from 'next/link';
 
 const SignUp = () => {
@@ -81,7 +82,7 @@ const SignUp = () => {
               className="w-full bg-white text-black hover:bg-gray-200"
               onClick={handleGoogleSignUp}
             >
-              <FaGoogle className="mr-2" />
+              <FcGoogle className="mr-2" />
               Sign up with Google
             </Button>
             <Button
