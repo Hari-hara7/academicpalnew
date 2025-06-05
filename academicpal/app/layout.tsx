@@ -1,7 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Head from "next/head"; // Import Next.js Head component
+import Head from "next/head";
+import Script from "next/script"; // ✅ Import Script for Google Analytics
 
 import Header from "../components/Header";
 import HomeHeader from "../components/NavBar";
@@ -134,8 +135,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="keywords" content={currentSEO.keywords} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/academicpal.jpg" />
-        <link rel="manifest" href="/manifest.json" /> 
-        {/* Open Graph tags for social sharing */}
+        <link rel="manifest" href="/manifest.json" />
+        {/* Open Graph */}
         <meta property="og:title" content={currentSEO.title} />
         <meta property="og:description" content={currentSEO.description} />
         <meta property="og:type" content="website" />
@@ -147,19 +148,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="twitter:description" content={currentSEO.description} />
         <meta name="twitter:image" content="/og-image.png" />
       </Head>
+
+      {/* ✅ Google Analytics Scripts */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-2HKC8Z98W1"
+      />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-2HKC8Z98W1');
+        `}
+      </Script>
+
       <body className="min-h-screen bg-gray-900 text-white flex flex-col">
         {showHeader && <Header />}
         {showHomeHeader && <HomeHeader showUid={true} />}
-
         <main className="flex-grow">{children}</main>
-
         {pathname === "/home" && <BottomNav />}
-
-{!["/", "/signup", "/home"].includes(pathname) && <HomeFooter />}
-
-
-         {pathname === "/" && <Loginfooter />}
-          {pathname === "/signup" && <Loginfooter />}
+        {!["/", "/signup", "/home"].includes(pathname) && <HomeFooter />}
+        {(pathname === "/" || pathname === "/signup") && <Loginfooter />}
       </body>
     </html>
   );
