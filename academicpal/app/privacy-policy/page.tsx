@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
 
       <h2 className="text-lg font-semibold mt-6 mb-2">Your Rights</h2>
       <p className="text-gray-400">
-        You have the right to access, update, or delete your personal information. Contact us at <span className="underline">support@academicpal.com</span> for assistance.
+        You have the right to access, update, or delete your personal information. Contact us at <span className="underline">Hariharanath247@gmail.com</span> for assistance.
       </p>
 
       <h2 className="text-lg font-semibold mt-6 mb-2">Changes to This Policy</h2>
@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
 
       <p className="text-gray-400 mt-6">
         If you have any questions about this Privacy Policy, please contact us at{" "}
-        <span className="underline">support@academicpal.com</span>.
+        <span className="underline">Hariharanath247@gmail.com</span>.
       </p>
 
       <Link href="/" className="block mt-8 text-gray-400 hover:text-white">
