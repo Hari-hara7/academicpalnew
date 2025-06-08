@@ -16,6 +16,7 @@ import {
   Mail,
   UserCircle,
   Info,
+  Map,
 } from "lucide-react"
 
 import { useEffect, useState } from "react"
@@ -44,6 +45,16 @@ const FEATURES = [
     iconColor: "text-purple-500",
     link: "/notes",
     buttonText: "Access Notes",
+  },
+
+  {
+    title: 'Tech Roadmaps',
+    description:
+      'Explore structured roadmaps for various technologies. Stay on track with curated paths for frontend, backend, DevOps, AI, and more.',
+    icon: Map,
+    iconColor: 'text-yellow-500',
+    link: '/roadmaps',
+    buttonText: 'Explore Roadmaps',
   },
   {
     title: "Past Question Papers",

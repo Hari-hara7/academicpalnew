@@ -40,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "/dashboard/performance-analytics/create",
       "/about",
       "/dashboardd",
+      "/roadmaps",
     ].includes(pathname) ||
     pathname.startsWith("/dashboard/timetable/edit/") ||
     pathname.startsWith("/dashboard/timetable/delete/") ||

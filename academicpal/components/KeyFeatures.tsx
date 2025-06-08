@@ -17,7 +17,8 @@ import {
   BarChart4,
   AlarmClock,
   Users2,
-  CalendarDays
+  CalendarDays,
+  Map,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -31,6 +32,16 @@ const features = [
     link: '/register',
     buttonText: 'Explore Blogs',
   },
+  {
+  title: 'Tech Roadmaps',
+  description:
+    'Explore structured roadmaps for various technologies. Stay on track with curated paths for frontend, backend, DevOps, AI, and more.',
+  icon: Map, // you can replace this with any Lucide icon
+  iconColor: 'text-yellow-500',
+  link: '/roadmaps', // or wherever your page lives
+  buttonText: 'Explore Roadmaps',
+}
+,
   {
     title: ' Comprehensive Notes',
     description:
