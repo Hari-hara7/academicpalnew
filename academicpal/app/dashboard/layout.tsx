@@ -28,11 +28,11 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:relative z-40 h-full w-64 bg-black p-6 transition-transform transform ${
+        className={`fixed top-15 left-0 z-40 h-screen w-64 bg-black p-6 ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:translate-x-0`}
       >
-        <h2 className="text-2xl font-extrabold mb-8 tracking-wide">Academic Pal</h2>
+        <h2 className="text-2xl font-extrabold mb- tracking-wide">Academic Pal</h2>
         <nav className="space-y-4">
           <Link
             href="/dashboard"

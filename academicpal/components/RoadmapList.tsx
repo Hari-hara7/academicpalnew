@@ -63,7 +63,7 @@ export default function RoadmapList() {
               asChild
               variant="outline"
               className="flex items-center gap-2 bg-black text-white border-blue-400 hover:bg-black hover:text-white transition-colors duration-300"
-              aria-label={`Open roadmap link for ${r.title}`}
+           
             >
               <a
                 href={r.link}
