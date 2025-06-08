@@ -40,7 +40,7 @@ export default function RoadmapList() {
     );
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto px-4 font-inter">
+    <div className="grid grid-cols-1  lg:grid-cols-2 gap-6 max-w-6xl mx-auto px-2 font-inter">
       {roadmaps.map((r) => (
         <Card
           key={r.id}
@@ -62,7 +62,7 @@ export default function RoadmapList() {
             <Button
               asChild
               variant="outline"
-              className="flex items-center gap-2 text-blue-400 border-blue-400 hover:bg-blue-500 hover:text-white transition-colors duration-300"
+              className="flex items-center gap-2 bg-black text-white border-blue-400 hover:bg-black hover:text-white transition-colors duration-300"
               aria-label={`Open roadmap link for ${r.title}`}
             >
               <a
