@@ -16,8 +16,8 @@ const Header: React.FC = () => {
             <Image
               src="/academicpal.jpg"
               alt="Academic Pal Logo"
-              height={40}
-              width={90}
+              height={30}
+              width={70}
               priority
               className="rounded-md"
             />
