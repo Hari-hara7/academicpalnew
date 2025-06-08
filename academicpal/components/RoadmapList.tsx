@@ -11,7 +11,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { ShineBorder } from "@/components/magicui/shine-border";
-import { ExternalLink } from "lucide-react"; // Lucide icon import
+import { ExternalLink } from "lucide-react";
 
 type Roadmap = {
   id: string;
@@ -40,12 +40,12 @@ export default function RoadmapList() {
     );
 
   return (
-    <div className="space-y-6 max-w-3xl mx-auto font-inter">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto px-4 font-inter">
       {roadmaps.map((r) => (
         <Card
           key={r.id}
           className="relative bg-black text-white border-white/20 hover:shadow-blue-500/40 transition-shadow duration-300"
-          style={{ fontFeatureSettings: '"liga" 1' }} // enable ligatures if font supports
+          style={{ fontFeatureSettings: '"liga" 1' }}
         >
           <ShineBorder shineColor={["#3b82f6", "#60a5fa", "#93c5fd"]} />
           <CardHeader>
@@ -65,7 +65,12 @@ export default function RoadmapList() {
               className="flex items-center gap-2 text-blue-400 border-blue-400 hover:bg-blue-500 hover:text-white transition-colors duration-300"
               aria-label={`Open roadmap link for ${r.title}`}
             >
-              <a href={r.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <a
+                href={r.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
                 Open
                 <ExternalLink className="w-5 h-5" />
               </a>
