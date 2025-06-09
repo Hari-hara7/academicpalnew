@@ -11,7 +11,7 @@ import {
 import { getFirestore } from "firebase/firestore";
 
 
-// ✅ Firebase configuration from Firebase Console
+
 const firebaseConfig = {
   apiKey: "AIzaSyCp7culM97yeWN2GFZjk47sqlu0YaHQR2o",
   authDomain: "tail-44bd6.firebaseapp.com",
@@ -22,21 +22,21 @@ const firebaseConfig = {
   appId: "1:92562125471:web:e55634f4994ad3c4a1a8aa",
 };
 
-// ✅ Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 
-// ✅ Initialize Auth & Providers
+
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 export const provider = new GoogleAuthProvider();
 
-// ✅ Initialize Firestore
+
 const db = getFirestore(app);
 
 
 
-// ✅ Export for global use
+
 export {
   auth,
   db,

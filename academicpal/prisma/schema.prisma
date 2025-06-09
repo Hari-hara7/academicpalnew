@@ -3,17 +3,21 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  directUrl  = env("DIRECT_URL")
 }
 
 model Roadmap {
-  id          String   @id @default(uuid())
+  id          String     @id @default(uuid())
   title       String
-  description String?  
+  description String?
   link        String
-  createdAt   DateTime @default(now())
+  createdAt   DateTime   @default(now())
+
+  bookmarks   Bookmark[]
+  upvotes     Upvote[]
+  comments    Comment[]
 }
 
 model Feedback {
@@ -21,5 +25,34 @@ model Feedback {
   name      String
   email     String
   message   String
+  createdAt DateTime @default(now())
+}
+
+model Bookmark {
+  id        String   @id @default(uuid())
+  roadmap   Roadmap  @relation(fields: [roadmapId], references: [id])
+  roadmapId String
+  sessionId String   // Anonymous ID (cookie/localStorage)
+  createdAt DateTime @default(now())
+
+  @@unique([roadmapId, sessionId]) // Prevent duplicate bookmarks
+}
+
+model Upvote {
+  id        String   @id @default(uuid())
+  roadmap   Roadmap  @relation(fields: [roadmapId], references: [id])
+  roadmapId String
+  sessionId String   // Anonymous ID
+  createdAt DateTime @default(now())
+
+  @@unique([roadmapId, sessionId]) // Prevent multiple upvotes
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  roadmap   Roadmap  @relation(fields: [roadmapId], references: [id])
+  roadmapId String
+  sessionId String   // Anonymous ID
+  content   String
   createdAt DateTime @default(now())
 }

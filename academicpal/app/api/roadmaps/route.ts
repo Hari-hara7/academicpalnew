@@ -1,19 +1,57 @@
-import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { NextResponse } from 'next/server'
+import { prisma } from '@/lib/prisma'
 
-const prisma = new PrismaClient();
+export async function GET(req: Request) {
+  // get sessionId from query (if provided)
+  const { searchParams } = new URL(req.url)
+  const sessionId = searchParams.get('sessionId')
 
-export async function GET() {
+  // fetch all roadmaps ordered by createdAt descending
   const roadmaps = await prisma.roadmap.findMany({
-    orderBy: { createdAt: "desc" },
-  });
-  return NextResponse.json(roadmaps);
-}
+    orderBy: { createdAt: 'desc' },
+    include: {
+      comments: {
+        select: { id: true }, // only id to count comments
+      },
+      bookmarks: sessionId
+        ? {
+            where: { sessionId },
+            select: { id: true },
+          }
+        : false,
+      upvotes: sessionId
+        ? {
+            where: { sessionId },
+            select: { id: true },
+          }
+        : false,
+    },
+  })
 
-export async function POST(req: Request) {
-  const { title, link, description } = await req.json();  // Add description here
-  const roadmap = await prisma.roadmap.create({
-    data: { title, link, description },  // Now description is defined
-  });
-  return NextResponse.json(roadmap);
+  // transform data to include counts and boolean flags
+  const result = roadmaps.map((roadmap) => {
+    const bookmarkCount = roadmap.bookmarks.length ?? 0
+    const upvoteCount = roadmap.upvotes.length ?? 0
+    const commentsCount = roadmap.comments.length ?? 0
+
+    const hasBookmarked = sessionId
+      ? roadmap.bookmarks.length > 0
+      : false
+    const hasUpvoted = sessionId ? roadmap.upvotes.length > 0 : false
+
+    return {
+      id: roadmap.id,
+      title: roadmap.title,
+      description: roadmap.description,
+      link: roadmap.link,
+      createdAt: roadmap.createdAt,
+      bookmarks: bookmarkCount,
+      upvotes: upvoteCount,
+      commentsCount,
+      hasBookmarked,
+      hasUpvoted,
+    }
+  })
+
+  return NextResponse.json(result)
 }
