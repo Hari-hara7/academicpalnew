@@ -48,10 +48,10 @@ const Auth = ({ setUser }: AuthProps) => {
   return (
     <div className="min-h-screen bg-black text-white font-sans flex flex-col justify-between">
       {/* Header */}
-      <header className="w-full p-4 border-b border-white/10 backdrop-blur-md flex justify-end">
+      <header className="w-full p-4 border-b border-white/10 backdrop-blur-md flex justify-end mt-20">
         <Button
           onClick={signIn}
-          className="flex items-center gap-2 px-4 py-2 bg-white text-black font-semibold rounded-lg hover:scale-105 transition-transform shadow"
+          className="flex items-center gap-2 px-4 py-2 bg-white text-black font-semibold rounded-lg  "
         >
           <FaGoogle />
           Sign in with Google
