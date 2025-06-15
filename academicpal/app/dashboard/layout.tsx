@@ -28,7 +28,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-15 left-0 z-40 h-screen w-64 bg-black p-6 ${
+        className={`fixed top-15 left-0 z-40 max-h-[90vh] w-64 bg-black p-6 ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:translate-x-0`}
       >
