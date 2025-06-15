@@ -5,6 +5,7 @@ import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '@/lib/firebase';
 import { FaGoogle, FaCommentAlt, FaQuestionCircle } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
+import { NeonGradientCard } from '@/components/magicui/neon-gradient-card'; // Make sure the path is correct
 
 interface AuthProps {
   setUser: (user: any) => void;
@@ -12,8 +13,7 @@ interface AuthProps {
 
 const Auth = ({ setUser }: AuthProps) => {
   const [text, setText] = useState('');
-  const welcomeMessage =
-    'Welcome to Academic Pal Chat! ';
+  const welcomeMessage = 'Welcome to Academic Pal Chat!';
 
   useEffect(() => {
     let index = 0;
@@ -29,7 +29,6 @@ const Auth = ({ setUser }: AuthProps) => {
 
     setText('');
     animationFrameId = window.setTimeout(animateText, 200);
-
     return () => clearTimeout(animationFrameId);
   }, []);
 
@@ -46,42 +45,57 @@ const Auth = ({ setUser }: AuthProps) => {
     alert('Please sign in with Google to continue.');
   };
 
-  const actionButtonClass =
-    'bg-white text-white hover:bg-gray-200 transition-transform transform hover:scale-105 flex items-center gap-2';
-
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white font-sans">
+    <div className="min-h-screen bg-black text-white font-sans flex flex-col justify-between">
       {/* Header */}
-      <header className="flex justify-end items-center mt-18 px-6">
-        <Button onClick={signIn} className={actionButtonClass} aria-label="Sign in with Google">
-          <FaGoogle className="text-black" />
-          <span className="text-black font-semibold">Sign in with Google</span>
+      <header className="w-full p-4 border-b border-white/10 backdrop-blur-md flex justify-end">
+        <Button
+          onClick={signIn}
+          className="flex items-center gap-2 px-4 py-2 bg-white text-black font-semibold rounded-lg hover:scale-105 transition-transform shadow"
+        >
+          <FaGoogle />
+          Sign in with Google
         </Button>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center px-6 text-center">
-        <section className="max-w-xl">
-          <h1 className="text-3xl md:text-5xl font-bold mb-6">
-            <span className="text-white-400">{text}</span>
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-neutral-200">
-            Connect, collaborate, and access{' '}
-            <span className="text-purple-400 font-semibold">valuable academic resources</span>{' '}
-            effortlessly.
-          </p>
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-            <Button onClick={handleProtectedAction} className={actionButtonClass} aria-label="Start Chat">
-              <FaCommentAlt className="text-black" />
-              <span className="text-black font-semibold">Start Chat</span>
-            </Button>
-            <Button onClick={handleProtectedAction} className={actionButtonClass} aria-label="Ask a Question">
-              <FaQuestionCircle className="text-black" />
-              <span className="text-black font-semibold">Ask a Question</span>
-            </Button>
-          </div>
-        </section>
+      <main className="flex-1 flex flex-col justify-center items-center px-4 text-center">
+        <NeonGradientCard className="w-full max-w-xl p-[1px] rounded-2xl">
+          <section className="space-y-6  backdrop-blur-md bg-black p-8 rounded-2xl shadow-md">
+            <h1 className="text-3xl md:text-4xl font-bold text-white">{text}</h1>
+            <p className="text-gray-300 text-base md:text-lg">
+              Connect, collaborate, and access{' '}
+              <span className="text-blue-400 font-semibold">
+                valuable academic resources
+              </span>{' '}
+              effortlessly.
+            </p>
+
+            {/* Responsive Button Grid */}
+            <div className="grid grid-cols-2 gap-4 pt-4">
+              <Button
+                onClick={handleProtectedAction}
+                className="w-full flex items-center justify-center gap-2 px-12 sm:px-8 py-3 bg-white text-black rounded-xl font-semibold hover:bg-gray-200 transition"
+              >
+                <FaCommentAlt />
+                <span>Start Chat</span>
+              </Button>
+              <Button
+                onClick={handleProtectedAction}
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white text-black rounded-xl font-semibold hover:bg-gray-200 transition"
+              >
+                <FaQuestionCircle />
+                <span>Ask </span>
+              </Button>
+            </div>
+          </section>
+        </NeonGradientCard>
       </main>
+
+      {/* Footer */}
+      <footer className="text-center p-4 text-sm text-gray-500 border-t border-white/10 backdrop-blur-md">
+        &copy; {new Date().getFullYear()} Academic Pal. All rights reserved.
+      </footer>
     </div>
   );
 };

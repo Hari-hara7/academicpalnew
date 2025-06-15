@@ -9,7 +9,7 @@ import {
   orderBy,
   query,
 } from 'firebase/firestore';
-import { FaRegSmile, FaPaperclip, FaUserCircle } from 'react-icons/fa';
+import { FaRegSmile, FaPaperclip } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import io from 'socket.io-client';
@@ -71,7 +71,6 @@ const Chat = ({ user }: ChatProps) => {
   };
 
   const uploadFile = async (file: File): Promise<string> => {
-    // Replace with actual upload logic (e.g., Firebase Storage)
     return 'https://path.to.uploaded/file';
   };
 
@@ -102,44 +101,48 @@ const Chat = ({ user }: ChatProps) => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-black text-white">
-     
+    <div className="flex flex-col h-screen bg-black text-white font-sans">
+      {/* Header */}
+      <div className="p-4 border-b border-white/10 backdrop-blur-md">
+        <h1 className="text-xl font-bold text-white">Academic Pal Chat</h1>
+      </div>
 
-      {/* Chat Window */}
+      {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg, index) => (
           <motion.div
             key={index}
-            className={`p-3 rounded-lg max-w-xs ${
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className={`max-w-md p-4 rounded-xl border border-white/10 backdrop-blur-md ${
               msg.user === user.displayName
-                ? 'bg-blue-600 ml-auto text-right'
-                : 'bg-gray-900 mr-auto text-left'
+                ? 'ml-auto bg-blue-600'
+                : 'mr-auto bg-white/5'
             }`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
           >
             <div className="flex items-start space-x-3">
               <Image
                 src={msg.avatar}
                 alt="avatar"
-                width={48}
-                height={48}
-                className="rounded-full border-2 border-white"
+                width={40}
+                height={40}
+                className="rounded-full border border-white/20"
               />
-              <div className="flex flex-col">
-                <div className="text-sm font-semibold">
+              <div className="flex flex-col text-sm">
+                <div className="font-semibold">
                   {msg.user}{' '}
-                  <span className="text-xs text-gray-400">
-                    {new Date(msg.timestamp).toLocaleString()}
+                  <span className="text-xs text-gray-400 ml-1">
+                    {new Date(msg.timestamp).toLocaleTimeString()}
                   </span>
                 </div>
                 <div>{msg.text}</div>
                 {msg.file && (
                   <a
                     href={msg.file}
-                    className="text-blue-300 hover:underline"
+                    className="text-blue-400 hover:underline mt-1"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     View File
                   </a>
@@ -150,17 +153,17 @@ const Chat = ({ user }: ChatProps) => {
         ))}
 
         {isBotTyping && (
-          <div className="p-3 rounded-lg bg-gray-800 max-w-xs mr-auto text-left animate-pulse">
+          <div className="max-w-md p-4 rounded-xl border border-white/10 backdrop-blur-md bg-white/5 mr-auto animate-pulse">
             <div className="flex items-start space-x-3">
               <Image
                 src="https://path.to/bot/avatar"
                 alt="bot"
-                width={48}
-                height={48}
-                className="rounded-full border-2 border-blue-300"
+                width={40}
+                height={40}
+                className="rounded-full border border-blue-400"
               />
-              <div className="flex flex-col">
-                <div className="text-sm font-semibold">Academic Pal Bot</div>
+              <div>
+                <div className="font-semibold">Academic Pal Bot</div>
                 <div>Typing...</div>
               </div>
             </div>
@@ -168,39 +171,41 @@ const Chat = ({ user }: ChatProps) => {
         )}
       </div>
 
-      {/* Chat Input */}
-      <div className="flex items-center p-4 border-t border-gray-700">
-        <div className="relative flex-1">
-          <input
-            type="text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-            className="rounded-lg p-4 w-full bg-gray-800 text-white focus:outline-none"
-            placeholder="Type your message..."
-          />
-          <div className="absolute right-4 top-2 flex items-center space-x-2">
-            <FaRegSmile className="cursor-pointer text-gray-300 hover:text-blue-500" />
-            <FaPaperclip
-              className="cursor-pointer text-gray-300 hover:text-blue-500"
-              onClick={() => document.getElementById('fileInput')?.click()}
-            />
+      {/* Input */}
+      <div className="p-4 border-t border-white/10 backdrop-blur-md">
+        <div className="flex items-center gap-3">
+          <div className="relative flex-1">
             <input
-              type="file"
-              id="fileInput"
-              className="hidden"
-              onChange={(e) =>
-                setFile(e.target.files ? e.target.files[0] : null)
-              }
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
+              placeholder="Type your message..."
+              className="w-full p-4 rounded-xl bg-white/5 text-white placeholder-gray-400 outline-none border border-white/10"
             />
+            <div className="absolute right-3 top-3 flex items-center space-x-3">
+              <FaRegSmile className="text-white/60 hover:text-blue-500 cursor-pointer" />
+              <FaPaperclip
+                className="text-white/60 hover:text-blue-500 cursor-pointer"
+                onClick={() => document.getElementById('fileInput')?.click()}
+              />
+              <input
+                id="fileInput"
+                type="file"
+                className="hidden"
+                onChange={(e) =>
+                  setFile(e.target.files ? e.target.files[0] : null)
+                }
+              />
+            </div>
           </div>
+          <button
+            onClick={handleSubmit}
+            className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 transition-colors"
+          >
+            Send
+          </button>
         </div>
-        <button
-          onClick={handleSubmit}
-          className="ml-4 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
-        >
-          Send
-        </button>
       </div>
     </div>
   );
