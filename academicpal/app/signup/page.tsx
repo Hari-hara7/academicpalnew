@@ -79,7 +79,7 @@ const SignUp = () => {
           <div className="flex flex-col gap-4">
             <Button
               variant="outline"
-              className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins"
+              className="w-full bg-white text-black hover:bg-gray-200 "
               onClick={handleGoogleSignUp}
             >
               <FcGoogle className="mr-2 font-montserrat" />
@@ -87,7 +87,7 @@ const SignUp = () => {
             </Button>
             <Button
               variant="outline"
-              className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins"
+              className="w-full bg-white text-black hover:bg-gray-200 "
               onClick={handleGithubSignUp}
             >
               <FaGithub className="mr-2" />
@@ -152,7 +152,7 @@ const SignUp = () => {
             </div>
             {error && <p className="text-red-500 text-sm">{error}</p>}
 
-            <Button type="submit" className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins">
+            <Button type="submit" className="w-full bg-white text-black hover:bg-gray-200">
               Sign Up
             </Button>
           </form>
