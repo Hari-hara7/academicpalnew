@@ -34,17 +34,17 @@ export default function CreateReminderPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-6 mt-1">
+    <div className="min-h-screen bg-black flex items-center justify-center px-4 sm:px-6 py-10">
       <Toaster position="top-right" />
-      <div className="w-full max-w-xl bg-black bg-opacity-80 rounded-xl p-8 shadow-lg">
-        <h2 className="flex items-center text-3xl font-extrabold text-white mb-8 gap-2">
-          <PlusCircle className="w-8 h-8 text-white" />
+      <div className="w-full max-w-md sm:max-w-xl bg-black bg-opacity-80 rounded-xl p-6 sm:p-8 shadow-lg">
+        <h2 className="flex items-center text-2xl sm:text-3xl font-extrabold text-white mb-6 sm:mb-8 gap-2">
+          <PlusCircle className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
           New Study Reminder
         </h2>
 
-        <form onSubmit={handleSubmit} className="grid gap-6">
+        <form onSubmit={handleSubmit} className="grid gap-5 sm:gap-6">
           <div className="flex flex-col">
-            <Label className="text-white mb-2">Title</Label>
+            <Label className="text-white mb-1 sm:mb-2">Title</Label>
             <Input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -55,7 +55,7 @@ export default function CreateReminderPage() {
           </div>
 
           <div className="flex flex-col">
-            <Label className="text-white mb-2">Description (optional)</Label>
+            <Label className="text-white mb-1 sm:mb-2">Description (optional)</Label>
             <Textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -66,7 +66,7 @@ export default function CreateReminderPage() {
           </div>
 
           <div className="flex flex-col">
-            <Label className="text-white mb-2">Remind At</Label>
+            <Label className="text-white mb-1 sm:mb-2">Remind At</Label>
             <Input
               type="datetime-local"
               value={remindAt}
