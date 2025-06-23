@@ -245,7 +245,7 @@ export default function FeedbackSection() {
   }, []);
 
   return (
-    <section className="bg-black text-white py-12 px-4 max-w-5xl mx-auto">
+    <section className="bg-black text-white py-12 px-4 max-w-5xl mx-auto font-bold font-poppins">
       <motion.h2
         className="text-4xl font-bold text-center mb-10"
         initial={{ opacity: 0, y: 30 }}

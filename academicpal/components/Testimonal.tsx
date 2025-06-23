@@ -64,7 +64,7 @@ export default function Testimonials() {
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center text-3xl sm:text-4xl font-extrabold mb-12 sm:mb-16 tracking-tight drop-shadow-lg"
+        className="text-center text-3xl sm:text-4xl font-extrabold mb-12 sm:mb-16 tracking-tight drop-shadow-lg font-bold font-poppins"
       >
         What Our Users Say
       </motion.h2>

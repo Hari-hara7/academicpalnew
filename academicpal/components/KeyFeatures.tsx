@@ -147,7 +147,7 @@ const features = [
 const KeyFeatures = () => {
   return (
     <section className="py-20 px-4 bg-black text-white font-display">
-      <h2 className="text-4xl md:text-5xl font-extrabold mb-12 text-center tracking-tight">
+      <h2 className="text-4xl md:text-5xl  mb-12 text-center tracking-tight font-bold font-poppins">
          Key Features
       </h2>
       <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
@@ -156,7 +156,7 @@ const KeyFeatures = () => {
           return (
             <Card
               key={feature.title}
-              className="relative bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between mt-4"
+              className="relative bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between mt-4 font-montserrat"
             >
               <div className="flex justify-center items-center p-6">
                 <IconComponent className={`w-16 h-16 ${feature.iconColor}`} />
@@ -165,11 +165,11 @@ const KeyFeatures = () => {
                 <div className="mb-4">
                   <div className="flex items-center gap-3 mb-3">
                     <IconComponent className={`w-6 h-6 ${feature.iconColor}`} />
-                    <CardTitle className="text-lg md:text-xl font-semibold text-white">
+                    <CardTitle className="text-lg md:text-xl font-semibold text-white font-montserrat">
                       {feature.title}
                     </CardTitle>
                   </div>
-                  <p className="text-sm text-zinc-300 leading-relaxed">{feature.description}</p>
+                  <p className="text-sm text-zinc-300 leading-relaxed font-lato">{feature.description}</p>
                 </div>
                 <Link href={feature.link}>
                   <Button className="mt-4 w-full flex items-center justify-center gap-2 text-sm font-medium rounded-lg">

@@ -33,7 +33,7 @@ export default function NewHero() {
         </h1>
 
         <p className="mt-4 sm:mt-6 text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
-          AcademicPal is a next-gen platform with{" "}
+          Academic Pal is a next-gen platform with{" "}
           <span className="text-white font-semibold">curated notes</span>,{" "}
           <span className="text-white font-semibold">real-time chat</span>, and{" "}
           <span className="text-white font-semibold">AI-powered search</span> — trusted by over{" "}

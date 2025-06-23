@@ -85,13 +85,13 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center bg-black text-white px-4">
       <Card className="w-full max-w-md bg-dark-900 text-white">
         <CardHeader>
-          <h1 className="text-2xl font-bold text-center">Sign in to Academic Pal</h1>
+          <h1 className="text-2xl font-bold text-center font-montserrat">Sign in to Academic Pal</h1>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-4">
             <Button
               variant="outline"
-              className="w-full bg-white text-black hover:bg-gray-200"
+              className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins"
               onClick={handleGoogleSignIn}
             >
               <FcGoogle className="mr-2" />
@@ -99,7 +99,7 @@ const Login = () => {
             </Button>
             <Button
               variant="outline"
-              className="w-full bg-white text-black hover:bg-gray-200"
+              className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins"
               onClick={handleGithubSignIn}
             >
               <FaGithub className="mr-2" />
@@ -138,7 +138,7 @@ const Login = () => {
             </div>
             {error && <p className="text-red-500 text-sm">{error}</p>}
             {message && <p className="text-green-500 text-sm">{message}</p>}
-            <Button type="submit" className="w-full bg-white text-black hover:bg-gray-200">
+            <Button type="submit" className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins">
               Login
             </Button>
           </form>
@@ -150,9 +150,9 @@ const Login = () => {
           >
             Forgot Password?
           </button>
-          <p className="text-sm">
+          <p className="text-sm text-base font-lato">
             Don’t have an account?{' '}
-            <Link href="/signup" className="text-blue-500 hover:underline">
+            <Link href="/signup" className="text-blue-500 hover:underline ">
               Sign up
             </Link>
           </p>

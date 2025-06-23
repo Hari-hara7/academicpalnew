@@ -79,15 +79,15 @@ const SignUp = () => {
           <div className="flex flex-col gap-4">
             <Button
               variant="outline"
-              className="w-full bg-white text-black hover:bg-gray-200"
+              className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins"
               onClick={handleGoogleSignUp}
             >
-              <FcGoogle className="mr-2" />
+              <FcGoogle className="mr-2 font-montserrat" />
               Sign up with Google
             </Button>
             <Button
               variant="outline"
-              className="w-full bg-white text-black hover:bg-gray-200"
+              className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins"
               onClick={handleGithubSignUp}
             >
               <FaGithub className="mr-2" />
@@ -152,13 +152,13 @@ const SignUp = () => {
             </div>
             {error && <p className="text-red-500 text-sm">{error}</p>}
 
-            <Button type="submit" className="w-full bg-white text-black hover:bg-gray-200">
+            <Button type="submit" className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins">
               Sign Up
             </Button>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col gap-2">
-          <p className="text-sm">
+          <p className="text-sm text-base font-lato">
             Already have an account?{' '}
             <Link href="/" className="text-blue-500 hover:underline">
               Sign in

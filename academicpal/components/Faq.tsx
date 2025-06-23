@@ -59,7 +59,7 @@ export default function FAQ() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-3xl sm:text-4xl font-extrabold text-center mb-10 md:mb-12 drop-shadow-md"
+        className="text-3xl sm:text-4xl  text-center mb-10 md:mb-12 drop-shadow-md font-bold font-poppins"
       >
         Frequently Asked Questions
       </motion.h2>

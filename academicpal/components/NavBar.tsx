@@ -56,7 +56,7 @@ const NavBar = () => {
         <Link href="/home" className="flex items-center gap-3">
           <Image src="/academicpal.jpg" alt="Academicpal Logo" width={70} height={70} className="rounded-md" />
           <span className="text-xl font-semibold tracking-tight leading-tight font-[Poppins]">
-            Academicpal
+            Academic pal
           </span>
         </Link>
 

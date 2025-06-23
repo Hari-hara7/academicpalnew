@@ -30,7 +30,7 @@ const steps = [
 export default function HowItWorks() {
   return (
     <section className="bg-black text-white py-16 px-4 sm:px-6 max-w-7xl mx-auto">
-      <h2 className="text-center text-3xl sm:text-4xl font-extrabold mb-10 tracking-tight drop-shadow-md">
+      <h2 className="text-center text-3xl sm:text-4xl  mb-10 tracking-tight drop-shadow-md font-bold font-poppins">
         How AcademicPal Works
       </h2>
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -46,8 +46,8 @@ export default function HowItWorks() {
             <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white text-lg sm:text-xl font-bold drop-shadow-lg mb-3 sm:mb-4 select-none">
               {idx + 1}
             </div>
-            <CardTitle className="text-sm sm:text-base text-center">{step.title}</CardTitle>
-            <CardContent className="p-0 mt-1 sm:mt-2 text-center text-gray-300 text-xs sm:text-sm">
+            <CardTitle className="text-sm sm:text-base text-center font-montserrat">{step.title}</CardTitle>
+            <CardContent className="p-0 mt-1 sm:mt-2 text-center text-gray-300 text-xs sm:text-sm font-lato">
               {step.description}
             </CardContent>
             <CheckCircle

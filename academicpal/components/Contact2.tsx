@@ -46,13 +46,13 @@ export default function ContactPage() {
   return (
     <section className="bg-black text-white py-24 px-6 max-w-5xl mx-auto">
       <motion.h2
-        className="text-4xl font-extrabold text-center mb-16 tracking-tight"
+        className="text-4xl font-extrabold text-center mb-16 tracking-tight font-bold font-poppins"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        Contact
+        Contact Us
       </motion.h2>
 
     <div className="grid md:grid-cols-2 gap-10">

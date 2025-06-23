@@ -76,7 +76,7 @@ export default function SupportAndHelp() {
   return (
     <section className="bg-black text-white py-12 px-4 max-w-5xl mx-auto">
       <motion.h2
-        className="text-3xl sm:text-4xl font-bold text-center mb-4"
+        className="text-3xl sm:text-4xl  text-center mb-4 font-bold font-poppins"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

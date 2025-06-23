@@ -16,7 +16,7 @@ const LoginFooter: FC = () => {
             priority
             className="object-contain"
           />
-          <span className="text-2xl font-semibold tracking-wide">Academic Pal</span>
+          <span className="text-2xl  tracking-wide font-bold font-poppins">Academic Pal</span>
         </div>
 
         {/* Navigation Links with icons */}

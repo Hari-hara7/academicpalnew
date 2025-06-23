@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-10">
          
           <div className="flex flex-col items-center md:items-start">
-            <h1 className="text-4xl font-extrabold text-yellow-400 font-poppins">
+            <h1 className="text-4xl  text-yellow-400 font-bold font-poppins">
               Academic Pal
             </h1>
             <p className="mt-2 text-gray-400 text-center md:text-left font-light">

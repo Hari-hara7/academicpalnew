@@ -23,8 +23,8 @@ const Header: React.FC = () => {
             />
           </Link>
           <h1
-            className="text-xl sm:text-2xl font-serif font-bold"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-xl sm:text-2xl font-bold font-poppins"
+           
           >
             Academic Pal
           </h1>
