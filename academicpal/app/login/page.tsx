@@ -43,8 +43,8 @@ export default function LoginPage() {
             height={80}
             className="mb-2"
           />
-          <h2 className="text-3xl font-semibold">Welcome Back</h2>
-          <p className="text-sm text-white/60">Sign in to your account</p>
+          <h2 className="text-3xl font-semibold font-montserrat">Welcome Back</h2>
+          <p className="text-sm text-white/60 font-montserrat">Sign in to your account</p>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
