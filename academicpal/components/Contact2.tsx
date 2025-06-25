@@ -63,7 +63,7 @@ export default function ContactPage() {
 
       {/* Title */}
       <motion.h2
-        className="text-4xl md:text-5xl font-bold text-center mb-14 tracking-tight"
+        className="text-4xl md:text-5xl font-bold text-center mb-14 tracking-tight font-bold font-poppins"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
