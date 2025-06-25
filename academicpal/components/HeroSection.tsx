@@ -60,7 +60,7 @@ export default function NewHero() {
           className="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
         >
           <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-colors w-full sm:w-auto">
-            <Link href="/upload" className="flex items-center gap-2 w-full justify-center">
+            <Link href="/upload" className="flex items-center gap-2 w-full justify-center font-semibold font-poppins">
               Get Started <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>
@@ -69,7 +69,7 @@ export default function NewHero() {
             variant="outline"
             className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-2 rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all w-full sm:w-auto"
           >
-            <Link href="/about" className="flex items-center gap-2 w-full justify-center">
+            <Link href="/about" className="flex items-center gap-2 w-full justify-center font-semibold font-poppins">
               Learn More
             </Link>
           </Button>

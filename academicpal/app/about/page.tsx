@@ -64,7 +64,7 @@ const MLTechIcon = ({ tech }: { tech: string }) => mlTechIcons[tech] || null;
       <section className="max-w-6xl mx-auto space-y-12">
         {/* Header */}
         <header>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 mt-8">
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 mt-10 font-bold font-poppins">
             About <span className="text-white">AcademicPal</span>
           </h1>
           <p className="text-base sm:text-lg text-gray-300 max-w-2xl leading-relaxed">
@@ -123,10 +123,10 @@ const MLTechIcon = ({ tech }: { tech: string }) => mlTechIcons[tech] || null;
 
         {/* About the Developer */}
         <section>
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-4">About the Developer</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 font-bold font-poppins">About the Developer</h2>
           <Card className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-lg shadow-md">
             <CardContent className="p-5 sm:p-6">
-              <h3 className="text-xl sm:text-2xl font-bold mb-1 text-gray-100">
+              <h3 className="text-xl sm:text-2xl font-bold mb-1 text-gray-100 font-bold font-poppins">
                 Hariharanath
               </h3>
               <p className="text-gray-300 text-sm sm:text-lg">
@@ -166,7 +166,7 @@ const MLTechIcon = ({ tech }: { tech: string }) => mlTechIcons[tech] || null;
 
     {/* Machine Learning Tech Stack */}
     <section>
-      <h2 className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+      <h2 className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6 font-bold font-poppins">
         Machine Learning Tech Stack
       </h2>
       <div className="flex flex-wrap gap-3 sm:gap-4 mb-4">
@@ -181,9 +181,9 @@ const MLTechIcon = ({ tech }: { tech: string }) => mlTechIcons[tech] || null;
         ))}
       </div>
       <Card className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-lg shadow-md p-4">
-        <p className="text-gray-300 text-sm sm:text-base">
+        <p className="text-gray-300 text-sm sm:text-base ">
           Chatbot with AI NLP developed by{" "}
-          <span className="font-semibold text-white">Teja</span>.
+          <span className="font-semibold text-white font-bold font-poppins">Teja</span>.
         </p>
       </Card>
     </section>
