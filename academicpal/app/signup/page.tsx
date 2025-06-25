@@ -15,7 +15,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
+import { FcGoogle } from "react-icons/fc";
 import Link from 'next/link';
 
 const SignUp = () => {
@@ -24,6 +24,7 @@ const SignUp = () => {
   const [usn, setUsn] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [acceptTerms, setAcceptTerms] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleGoogleSignUp = async () => {
@@ -50,6 +51,11 @@ const SignUp = () => {
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!acceptTerms) {
+      setError('You must accept the Terms & Conditions to continue.');
+      return;
+    }
 
     if (!isValidEmail(email)) {
       setError('Please enter a valid NMAMIT email.');
@@ -79,15 +85,15 @@ const SignUp = () => {
           <div className="flex flex-col gap-4">
             <Button
               variant="outline"
-              className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins"
+              className="w-full bg-white text-black hover:bg-gray-200 font-semibold"
               onClick={handleGoogleSignUp}
             >
-              <FcGoogle className="mr-2 font-montserrat" />
+              <FcGoogle className="mr-2" />
               Sign up with Google
             </Button>
             <Button
               variant="outline"
-              className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins"
+              className="w-full bg-white text-black hover:bg-gray-200 font-semibold"
               onClick={handleGithubSignUp}
             >
               <FaGithub className="mr-2" />
@@ -150,18 +156,36 @@ const SignUp = () => {
                 required
               />
             </div>
+
+            <div className="flex items-start gap-2 pt-2">
+              <input
+                type="checkbox"
+                id="terms"
+                checked={acceptTerms}
+                onChange={() => setAcceptTerms(!acceptTerms)}
+                className="mt-1"
+              />
+              <label htmlFor="terms" className="text-sm text-gray-300">
+                I agree to the{' '}
+                <Link href="/terms-and-conditions" className="underline text-blue-400 hover:text-blue-300">
+                  Terms & Conditions
+                </Link>
+              </label>
+            </div>
+
             {error && <p className="text-red-500 text-sm">{error}</p>}
 
             <Button
               type="submit"
-              className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins"
+              className="w-full bg-white text-black hover:bg-gray-200 font-semibold"
+              disabled={!acceptTerms}
             >
               Sign Up
             </Button>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col gap-2">
-          <p className="text-sm font-lato">
+          <p className="text-sm font-lato text-base">
             Already have an account?{' '}
             <Link href="/" className="text-blue-500 hover:underline">
               Sign in
