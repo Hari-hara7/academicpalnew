@@ -40,15 +40,15 @@ const Footer = () => {
             </p>
             <ul className="text-gray-300 text-sm lg:text-base space-y-2">
               <li className="flex items-center gap-2">
-                <ChevronRight className="w-4 h-4 text-yellow-400" />
+                <ChevronRight className="w-4 h-4 text-blue-400" />
                 Student-first, always free.
               </li>
               <li className="flex items-center gap-2">
-                <ChevronRight className="w-4 h-4 text-yellow-400" />
+                <ChevronRight className="w-4 h-4 text-blue-400" />
                 Covers all branches & semesters.
               </li>
               <li className="flex items-center gap-2">
-                <ChevronRight className="w-4 h-4 text-yellow-400" />
+                <ChevronRight className="w-4 h-4 text-blue-400" />
                Supports all branches & semesters
               </li>
             </ul>
