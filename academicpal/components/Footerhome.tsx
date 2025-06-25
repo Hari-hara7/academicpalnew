@@ -108,7 +108,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Connect</h3>
             <div className="text-sm lg:text-base text-gray-400 space-y-3">
               <p className="flex items-center gap-2">
-                <Mail className="w-4 h-4" /> academicplahari@gmail.com
+                <Mail className="w-4 h-4" /> Hariharanath247@gmail.com
               </p>
               <p className="flex items-center gap-2">
                 <Phone className="w-4 h-4" /> +91 7989777877
