@@ -1,59 +1,77 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import {
   Mail,
   Phone,
   Github,
   Linkedin,
-  Twitter,
   ShieldCheck,
   FileText,
   Home,
   BookOpen,
   Users,
+  ChevronRight,
 } from "lucide-react";
-import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-10">
-      <div className="container mx-auto px-4">
-        {/* Top Section */}
-        <div className="grid md:grid-cols-4 gap-8 items-start">
-          {/* Logo and Description */}
-          <div className="flex flex-col gap-2">
-            <Image
-              src="/academicpal.jpg"
-              alt="Academic Pal Logo"
-              width={90}
-              height={50}
-              className="mb-2"
-            />
-            <p className="text-gray-400 text-sm">
-              Academic Pal — Empowering your academic journey with quality notes, resources, and support.
+    <footer className="bg-black text-white py-16 px-6 lg:px-12 xl:px-24">
+      <div className="max-w-[1600px] mx-auto">
+        {/* Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12">
+          {/* Logo + Highlights */}
+          <div className="col-span-2">
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/academicpal.jpg"
+                alt="Academic Pal Logo"
+                width={50}
+                height={50}
+                className="rounded"
+              />
+              <h2 className="text-xl lg:text-2xl font-bold font-bold font-poppins">Academic Pal</h2>
+            </div>
+            <p className="text-gray-400 text-sm lg:text-base leading-relaxed mb-4">
+              Your all-in-one academic resource platform for B.Tech students. Notes, question banks, syllabus & more!
             </p>
+            <ul className="text-gray-300 text-sm lg:text-base space-y-2">
+              <li className="flex items-center gap-2">
+                <ChevronRight className="w-4 h-4 text-yellow-400" />
+                Student-first, always free.
+              </li>
+              <li className="flex items-center gap-2">
+                <ChevronRight className="w-4 h-4 text-yellow-400" />
+                Covers all branches & semesters.
+              </li>
+              <li className="flex items-center gap-2">
+                <ChevronRight className="w-4 h-4 text-yellow-400" />
+               Supports all branches & semesters
+              </li>
+            </ul>
           </div>
 
           {/* Explore */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Explore</h3>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-3 text-gray-400 text-sm lg:text-base">
               <li>
-                <a href="/home" className="hover:text-white flex items-center gap-1">
+                <Link href="/home" className="hover:text-white flex items-center gap-2">
                   <Home className="w-4 h-4" /> Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/notes" className="hover:text-white flex items-center gap-1">
+                <Link href="/notes" className="hover:text-white flex items-center gap-2">
                   <BookOpen className="w-4 h-4" /> Notes
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/about" className="hover:text-white flex items-center gap-1">
+                <Link href="/about" className="hover:text-white flex items-center gap-2">
                   <Users className="w-4 h-4" /> About Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -61,47 +79,66 @@ const Footer = () => {
           {/* Legal */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-3 text-gray-400 text-sm lg:text-base">
               <li>
-                <a href="/privacy-policy" className="hover:text-white flex items-center gap-1">
+                <Link href="/privacy-policy" className="hover:text-white flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4" /> Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/terms-and-conditions" className="hover:text-white flex items-center gap-1">
+                <Link href="/terms-and-conditions" className="hover:text-white flex items-center gap-2">
                   <FileText className="w-4 h-4" /> Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://opensource.org/licenses/MIT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white flex items-center gap-2"
+                >
+                  <FileText className="w-4 h-4" /> MIT License
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Contact & Social */}
+          {/* Contact + Socials */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <p className="flex items-center gap-2 text-gray-400">
-              <Mail className="w-4 h-4" /> academicplahari@gmail.com
-            </p>
-            <p className="flex items-center gap-2 text-gray-400 mt-1">
-              <Phone className="w-4 h-4" /> +91 7989777877
-            </p>
-            <div className="flex space-x-4 mt-4">
-              <a href="https://github.com/Academic-pal" aria-label="GitHub" className="hover:text-gray-400">
-                <Github className="w-5 h-5" />
+            <h3 className="text-lg font-semibold mb-4">Connect</h3>
+            <div className="text-sm lg:text-base text-gray-400 space-y-3">
+              <p className="flex items-center gap-2">
+                <Mail className="w-4 h-4" /> academicplahari@gmail.com
+              </p>
+              <p className="flex items-center gap-2">
+                <Phone className="w-4 h-4" /> +91 7989777877
+              </p>
+            </div>
+
+            <div className="mt-4 flex flex-col gap-3 text-gray-400">
+              <a
+                href="https://github.com/Academic-pal"
+                target="_blank"
+                className="hover:text-white flex items-center gap-2"
+              >
+                <Github className="w-4 h-4" /> GitHub
               </a>
-              <a href="https://www.linkedin.com/company/102724699/admin/dashboard/" aria-label="LinkedIn" className="hover:text-gray-400">
-                <Linkedin className="w-5 h-5" />
+              <a
+                href="https://www.linkedin.com/company/102724699/admin/dashboard/"
+                target="_blank"
+                className="hover:text-white flex items-center gap-2"
+              >
+                <Linkedin className="w-4 h-4" /> LinkedIn
               </a>
-              
             </div>
           </div>
         </div>
 
-        {/* Separator */}
-        <Separator className="my-6 bg-gray-700" />
-
-        {/* Footer Bottom */}
-        <div className="text-center text-gray-500 text-xs">
-          © 2025 Academic Pal. All rights reserved.
+        {/* Bottom */}
+        <Separator className="my-10 bg-gray-700" />
+        <div className="flex flex-col lg:flex-row justify-between items-center text-xs lg:text-sm text-gray-500 gap-2">
+          <span>© 2025 Academic Pal. All rights reserved.</span>
+       <span>Made in India 🇮🇳 | Built with ❤️ | MIT Licensed</span>
         </div>
       </div>
     </footer>

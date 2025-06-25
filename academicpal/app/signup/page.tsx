@@ -15,7 +15,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { FcGoogle } from "react-icons/fc";
+import { FcGoogle } from 'react-icons/fc';
 import Link from 'next/link';
 
 const SignUp = () => {
@@ -29,7 +29,7 @@ const SignUp = () => {
   const handleGoogleSignUp = async () => {
     try {
       const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
+      await signInWithPopup(auth, provider);
       router.push('/home');
     } catch (err: any) {
       setError(err.message);
@@ -39,7 +39,7 @@ const SignUp = () => {
   const handleGithubSignUp = async () => {
     try {
       const provider = new GithubAuthProvider();
-      const result = await signInWithPopup(auth, provider);
+      await signInWithPopup(auth, provider);
       router.push('/home');
     } catch (err: any) {
       setError(err.message);
@@ -152,13 +152,16 @@ const SignUp = () => {
             </div>
             {error && <p className="text-red-500 text-sm">{error}</p>}
 
-            <Button type="submit" className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins">
+            <Button
+              type="submit"
+              className="w-full bg-white text-black hover:bg-gray-200 font-semibold font-poppins"
+            >
               Sign Up
             </Button>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col gap-2">
-          <p className="text-sm text-base font-lato">
+          <p className="text-sm font-lato">
             Already have an account?{' '}
             <Link href="/" className="text-blue-500 hover:underline">
               Sign in
