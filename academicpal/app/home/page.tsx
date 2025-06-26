@@ -10,10 +10,9 @@ import Contact from '@/components/Contact';
 import Help from '@/components/Support';
 import Contact2 from '@/components/Contact2';
 import BottomNav from "@/components/BottomNav";//GlowingEffect
-import { Glow } from '@/components/Glow';
-
-
-
+import { Glow } from '@/components/Glow';//GoogleGeminiEffectDemo
+import { GoogleGeminiEffectDemo } from '@/components/GoogleGeminiEffectDemo';//TimelineDemo
+import { TimelineDemo } from '@/components/TimelineDemo';
 
 
 export default function Home() {
@@ -25,7 +24,10 @@ export default function Home() {
         <KeyFeatures />
         <About />
         <Glow />
-        <Workit />
+        <GoogleGeminiEffectDemo />
+        <TimelineDemo />
+       <Workit />
+       
         <Testimonials />
         <Faq />
         <Contact />
