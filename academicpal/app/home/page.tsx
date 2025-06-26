@@ -1,7 +1,7 @@
 import NavBar from '@/components/NavBar';
 import HeroSection from '@/components/HeroSection';
 import KeyFeatures from '@/components/KeyFeatures';
-import Testimonials from '@/components/Testimonal';
+
 import Footer from '@/components/Footerhome';
 import About from '@/components/About';
 import Workit from '@/components/Workit';
@@ -12,8 +12,8 @@ import Contact2 from '@/components/Contact2';
 import BottomNav from "@/components/BottomNav";//GlowingEffect
 import { Glow } from '@/components/Glow';//GoogleGeminiEffectDemo
 import { GoogleGeminiEffectDemo } from '@/components/GoogleGeminiEffectDemo';//TimelineDemo
-import { TimelineDemo } from '@/components/TimelineDemo';
-
+import { TimelineDemo } from '@/components/TimelineDemo';//MarqueeDemo
+import { MarqueeDemo  } from '@/components/MarqueeDemo';
 
 export default function Home() {
   return (
@@ -27,8 +27,7 @@ export default function Home() {
         <GoogleGeminiEffectDemo />
         <TimelineDemo />
        <Workit />
-       
-        <Testimonials />
+       <MarqueeDemo />
         <Faq />
         <Contact />
         <BottomNav />

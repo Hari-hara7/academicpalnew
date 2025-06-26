@@ -92,7 +92,17 @@
   0% {
     background-position: top center;}
   100% {
-    background-position: bottom center;}}}
+    background-position: bottom center;}}
+  @keyframes marquee {
+  from {
+    transform: translateX(0);}
+  to {
+    transform: translateX(calc(-100% - var(--gap)));}}
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);}
+  to {
+    transform: translateY(calc(-100% - var(--gap)));}}}
 
 :root {
   --radius: 0.625rem;
@@ -171,7 +181,6 @@
     @apply bg-background text-foreground;
   }
 }
-
 
 body {
   font-family: var(--font-inter), sans-serif; /* Inter for body */
