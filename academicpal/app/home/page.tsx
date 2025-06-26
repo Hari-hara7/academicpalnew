@@ -9,7 +9,12 @@ import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import Help from '@/components/Support';
 import Contact2 from '@/components/Contact2';
-import BottomNav from "@/components/BottomNav";
+import BottomNav from "@/components/BottomNav";//GlowingEffect
+import { Glow } from '@/components/Glow';
+
+
+
+
 
 export default function Home() {
   return (
@@ -19,6 +24,7 @@ export default function Home() {
         <HeroSection />
         <KeyFeatures />
         <About />
+        <Glow />
         <Workit />
         <Testimonials />
         <Faq />
