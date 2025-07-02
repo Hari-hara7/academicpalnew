@@ -1,4 +1,8 @@
-<h1 align="center"> Academic Pal</h1>
+<p align="center">
+  <img src="academicpallogo-removebg-preview (1).png" alt="AcademicPal Logo" width="50" height="50"/>
+  <h1 align="center" style="display:inline-block; margin-left: 10px;">AcademicPal</h1>
+</p>
+
 
 
 [![Website](https://img.shields.io/badge/Visit-Website-blueviolet)](https://www.academicpal.in)
