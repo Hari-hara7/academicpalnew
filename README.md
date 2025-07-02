@@ -38,14 +38,16 @@
 
 ## ⚙️ Tech Stack
 
-| Category          | Tech Used                                |
-|------------------|-------------------------------------------|
-| Frontend         | [Next.js](https://nextjs.org/), [ShadCN UI](https://ui.shadcn.com), [Tailwind CSS](https://tailwindcss.com), [Magic UI](https://magicui.dev) |
-| Languages        | [TypeScript](https://www.typescriptlang.org) |
-| Database         | [MongoDB](https://www.mongodb.com), [Firebase](https://firebase.google.com), [Supabase](https://supabase.com) |
-| Machine Learning | AI/ML integrations for smart search & analytics |
-| Hosting & Auth   | Vercel, Firebase Auth, Supabase Auth |
-| APIs             | 45+ REST/GraphQL routes for seamless frontend-backend integration |
+| Category          | Tech Used |
+|------------------|-----------|
+| Frontend         | [Next.js](https://nextjs.org/), [ShadCN UI](https://ui.shadcn.com), [Magic UI](https://magicui.dev), [Tailwind CSS](https://tailwindcss.com) |
+| Language         | [TypeScript](https://www.typescriptlang.org) |
+| Backend & DB     | [MongoDB](https://www.mongodb.com), [Firebase](https://firebase.google.com), [Supabase](https://supabase.com) |
+| Auth & Storage   | Firebase Auth, Supabase Storage |
+| Machine Learning | Custom ML for search, planner, and analytics |
+| Deployment       | [Vercel](https://vercel.com), [Docker](https://www.docker.com) |
+| DevOps           | Docker, GitHub Actions |
+| API System       | REST & GraphQL — 45+ API routes for scalable integrations |
 
 ---
 
