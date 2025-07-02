@@ -1,6 +1,5 @@
-<p align="center">
-  <h1>📚 AcademicPal</h1>
-</p>
+<h1 align="center">📚 AcademicPal</h1>
+
 
 [![Website](https://img.shields.io/badge/Visit-Website-blueviolet)](https://www.academicpal.in)
 [![Next.js](https://img.shields.io/badge/Built%20With-Next.js-000?logo=nextdotjs)](https://nextjs.org/)
