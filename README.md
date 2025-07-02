@@ -52,6 +52,13 @@
 
 ---
 
+<h2 align="center">🧱 System Architecture</h2>
+
+<p align="center">
+  <img src="academicpal architecture.jpg" alt="AcademicPal Architecture" width="100%" />
+</p>
+
+
 ## 🌐 API Routes
 
 AcademicPal boasts **45+ well-documented API routes** powering everything from authentication to resource management, chat, planner, analytics, and more.  
