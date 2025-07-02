@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="academicpallogo-removebg-preview (1).png" alt="AcademicPal Logo" width="50" height="50"/>
+  <img src="academicpallogo.png" alt="AcademicPal Logo" width="50" height="50"/>
   <h1 align="center" style="display:inline-block; margin-left: 10px;">AcademicPal</h1>
 </p>
 
