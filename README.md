@@ -1,4 +1,4 @@
-<h1 align="center">📚 AcademicPal</h1>
+<h1 align="center"> Academic Pal</h1>
 
 
 [![Website](https://img.shields.io/badge/Visit-Website-blueviolet)](https://www.academicpal.in)
