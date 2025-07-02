@@ -61,17 +61,12 @@ AcademicPal boasts **45+ well-documented API routes** powering everything from a
 ### Built with ❤️ by [Hariharanath](https://www.linkedin.com/in/hariharanath)
 
 - Role: **Full Stack Developer & Founder @ AcademicPal**
-- Club: Junior Developer, Finite Loop Club, NMAMIT
 - Technologies Used: Full Stack (Next.js + MongoDB + Firebase), UI/UX, DevOps
 - Currently building: AI-enhanced student ecosystems
 
 ---
 
-## 📸 Screenshots
 
-> *Coming Soon: Live previews, UI walkthroughs, and GIF demos*
-
----
 
 ## 🤝 Contributing
 
