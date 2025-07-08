@@ -105,7 +105,7 @@ export default function MindMapDashboardPage() {
                   <Button
                     size="sm"
                     variant="destructive"
-                    onClick={() => handleDelete(map._id)}
+                    onClick={() => router.push(`/dashboard/mind-map/delete/${map._id}`)}
                   >
                     <Trash2 className="h-4 w-4 mr-1" />
                     Delete
