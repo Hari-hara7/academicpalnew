@@ -10,6 +10,7 @@ import {
 import { FaProjectDiagram } from 'react-icons/fa';
 import { FaPenNib, FaUsers } from 'react-icons/fa';
 import { Toaster } from 'sonner';
+import { FaComments } from 'react-icons/fa';
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -24,6 +25,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     { href: '/dashboard/blogs', icon: <FaPenNib className="h-4 w-4" />, label: 'Blogs' },
     { href: '/dashboard/study-groups', icon: <FaUsers className="h-4 w-4" />, label: 'Groups' },
      { href: '/dashboard/mind-map', icon: <FaProjectDiagram className="h-4 w-4" />, label: 'Mind-map' },
+     { href: '/dashboard/forum', icon: <FaComments className="h-4 w-4" />, label: 'Forum' },
   ];
 
   return (

@@ -73,6 +73,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "/roadmaps",
       "/dashboard/mind-map",
       "/dashboard/mind-map/create",
+      "/dashboard/forum/create",
+      "/dashboard/forum",
     ].includes(pathname) ||
     pathname.startsWith("/dashboard/timetable/edit/") ||
     pathname.startsWith("/dashboard/timetable/delete/") ||
@@ -83,7 +85,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     pathname.startsWith("/dashboard/blogs/") ||
     pathname.startsWith("/dashboard/study-groups/") ||
    pathname.startsWith("/dashboard/mind-map/edit/") ||
-     pathname.startsWith("/dashboard/mind-map/view/") ||
+      pathname.startsWith("/dashboard/mind-map/edit/") ||
+     pathname.startsWith("/dashboard/forum/") ||///dashboard/forum/
     pathname.startsWith("/dashboard/performance-analytics/edit/");
 
   const seoData: Record<string, { title: string; description: string; keywords: string }> = {

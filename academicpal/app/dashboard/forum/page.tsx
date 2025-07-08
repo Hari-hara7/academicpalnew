@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { formatDistanceToNow } from 'date-fns';
 import { Button } from '@/components/ui/button';
+import { Plus, MessageCircle } from 'lucide-react';
 
 export default function ForumPage() {
   const [threads, setThreads] = useState<ForumPost[]>([]);
@@ -24,34 +25,55 @@ export default function ForumPage() {
   }, []);
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold">💬 Student Forum</h2>
-        <Button asChild>
-          <Link href="/dashboard/forum/create">➕ New Thread</Link>
+    <div className="min-h-screen bg-black text-white px-4 py-8 sm:px-8 max-w-5xl mx-auto">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
+        <div className="flex items-center gap-3">
+          <MessageCircle className="h-6 w-6 text-white/80" />
+          <h1 className="text-3xl font-semibold tracking-tight mt-4">Student Forum</h1>
+        </div>
+        <Button
+          variant="ghost"
+          className="bg-white text-black hover:bg-white/90 transition"
+          asChild
+        >
+          <Link href="/dashboard/forum/create" className="flex items-center gap-2 font-medium">
+            <Plus className="h-4 w-4" />
+            New Thread
+          </Link>
         </Button>
       </div>
 
+      {/* Threads */}
       {threads.length === 0 ? (
-        <p>No threads found.</p>
+        <p className="text-white/60 text-center">No threads found.</p>
       ) : (
-        <div className="grid gap-4">
+        <div className="space-y-4">
           {threads.map((thread) => (
-            <Card key={thread._id}>
-              <CardContent className="p-4 space-y-2">
+            <Card
+              key={thread._id}
+              className="bg-white/5 border border-white/10 backdrop-blur-md transition hover:border-white/30 rounded-xl"
+            >
+              <CardContent className="p-5 space-y-3">
                 <Link
                   href={`/dashboard/forum/${thread._id}`}
-                  className="text-lg font-semibold hover:underline"
+                  className="text-lg font-semibold text-white hover:underline underline-offset-4 transition"
                 >
                   {thread.title}
                 </Link>
-                <div className="text-sm text-gray-600">
-                  Posted by {thread.username} •{' '}
+
+                <div className="text-sm text-white/70">
+                  Posted by <span className="text-white font-medium">{thread.username}</span> •{' '}
                   {formatDistanceToNow(new Date(thread.createdAt ?? ''))} ago
                 </div>
-                <div className="flex gap-2 flex-wrap">
+
+                <div className="flex flex-wrap gap-2 mt-2">
                   {thread.tags?.map((tag) => (
-                    <Badge key={tag} variant="outline">
+                    <Badge
+                      key={tag}
+                      variant="outline"
+                      className="border-white/20 text-white/80 hover:border-white hover:text-white transition"
+                    >
                       #{tag}
                     </Badge>
                   ))}
