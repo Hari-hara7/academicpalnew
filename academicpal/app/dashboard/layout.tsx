@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
   Menu, Home, Calendar, LogOut, BookOpen, ClipboardList,
-  BellRing, BarChart2
+  BellRing, BarChart2 
 } from 'lucide-react';
+import { FaProjectDiagram } from 'react-icons/fa';
 import { FaPenNib, FaUsers } from 'react-icons/fa';
 import { Toaster } from 'sonner';
 
@@ -22,6 +23,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     { href: '/dashboard/study-reminders', icon: <BellRing className="h-4 w-4" />, label: 'Reminders' },
     { href: '/dashboard/blogs', icon: <FaPenNib className="h-4 w-4" />, label: 'Blogs' },
     { href: '/dashboard/study-groups', icon: <FaUsers className="h-4 w-4" />, label: 'Groups' },
+     { href: '/dashboard/mind-map', icon: <FaProjectDiagram className="h-4 w-4" />, label: 'Mind-map' },
   ];
 
   return (
