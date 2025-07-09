@@ -207,6 +207,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "/dashboard/tutoring",
       "/dashboard/tutoring/become",
       "/dashboard/forum",//dashboard/tutoring/become
+      "/dashboard/tutoring/find-tutor",
        
       "/dashboard/performance-analytics/create",   pathname.startsWith("/dashboard/timetable/edit/") ||
     pathname.startsWith("/dashboard/timetable/delete/") ||
