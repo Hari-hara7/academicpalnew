@@ -75,6 +75,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "/dashboard/mind-map/create",
       "/dashboard/forum/create",
       "/dashboard/forum",
+      "/dashboard/tutoring",
+      "/dashboard/tutoring/become",
+      "/dashboard/tutoring/find-tutor",
+      "/dashboard/tutoring/my-sessions",
     ].includes(pathname) ||
     pathname.startsWith("/dashboard/timetable/edit/") ||
     pathname.startsWith("/dashboard/timetable/delete/") ||
@@ -200,8 +204,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "/dashboard/study-reminders/create",
       "/dashboard/blogs",
       "/dashboard/blogs/create",
+      "/dashboard/tutoring",
+      "/dashboard/tutoring/become",
+      "/dashboard/forum",//dashboard/tutoring/become
+       
       "/dashboard/performance-analytics/create",   pathname.startsWith("/dashboard/timetable/edit/") ||
     pathname.startsWith("/dashboard/timetable/delete/") ||
+    
     pathname.startsWith("/dashboard/flashcards/edit/") ||
     pathname.startsWith("/dashboard/study-planner/edit/") ||
     pathname.startsWith("/dashboard/study-planner/delete/") ||
