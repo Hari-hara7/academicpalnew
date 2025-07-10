@@ -205,13 +205,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "/dashboard/blogs",
       "/dashboard/blogs/create",
       "/dashboard/tutoring",
+      "/dashboard/mind-map",
       "/dashboard/tutoring/become",
       "/dashboard/forum",//dashboard/tutoring/become
-      "/dashboard/tutoring/find-tutor",
+      "/dashboard/tutoring/find-tutor",//dashboard/forum/
        
       "/dashboard/performance-analytics/create",   pathname.startsWith("/dashboard/timetable/edit/") ||
     pathname.startsWith("/dashboard/timetable/delete/") ||
-    
+    pathname.startsWith("/dashboard/mind-map/view/") ||
+    pathname.startsWith("/dashboard/mind-map/edit/") ||
+    pathname.startsWith("/dashboard/mind-map/delete/") ||
+    pathname.startsWith("/dashboard/forum/") ||
     pathname.startsWith("/dashboard/flashcards/edit/") ||
     pathname.startsWith("/dashboard/study-planner/edit/") ||
     pathname.startsWith("/dashboard/study-planner/delete/") ||
