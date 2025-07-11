@@ -72,9 +72,9 @@
 
 ### 📈 Impact & Statistics
 
-- 🎓 **10,000+** students empowered
-- 📚 **1,000+** notes and resources shared  
-- ⚡ **45+** API endpoints for seamless integration
+- 🎓 **4,000+** students empowered
+- 📚 **10+** notes and resources shared  
+- ⚡ **50+** API endpoints for seamless integration
 - 🌍 **24/7** availability across all platforms
 
 ---
