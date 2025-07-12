@@ -80,8 +80,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "/dashboard/tutoring/become",
       "/dashboard/tutoring/find-tutor",
       "/dashboard/tutoring/my-sessions",
-    ].includes(pathname) ||
+    ].includes(pathname) ||///dashboard/tutoring/schedule/
     pathname.startsWith("/dashboard/timetable/edit/") ||
+    pathname.startsWith("/dashboard/tutoring/schedule/") ||
     pathname.startsWith("/dashboard/timetable/delete/") ||
     pathname.startsWith("/dashboard/flashcards/edit/") ||
     pathname.startsWith("/dashboard/study-planner/edit/") ||
@@ -209,13 +210,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "/dashboard/mind-map",
       "/dashboard/tutoring/become",
       "/dashboard/forum",//dashboard/tutoring/become
-      "/dashboard/tutoring/find-tutor",//dashboard/forum/
+      "/dashboard/tutoring/find-tutor",//dashboard/tutoring/schedule/
        
       "/dashboard/performance-analytics/create",   pathname.startsWith("/dashboard/timetable/edit/") ||
     pathname.startsWith("/dashboard/timetable/delete/") ||
     pathname.startsWith("/dashboard/mind-map/view/") ||
     pathname.startsWith("/dashboard/mind-map/edit/") ||
     pathname.startsWith("/dashboard/mind-map/delete/") ||
+    pathname.startsWith("/dashboard/tutoring/schedule/") ||
     pathname.startsWith("/dashboard/forum/") ||
     pathname.startsWith("/dashboard/flashcards/edit/") ||
     pathname.startsWith("/dashboard/study-planner/edit/") ||
