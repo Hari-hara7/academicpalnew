@@ -29,35 +29,48 @@ data = pd.DataFrame([
     {'Semester': '1st', 'Cycle': 'Chemistry', 'Subject': 'EV', 'Keywords': 'ev, environmental studies', 'Notes Link': 'https://drive.google.com/drive/folders/1EBRbMBS6r42GQ60k8O4AdkiC_0muZ1TF'},
 ])
 
-# Create a simplified ML model (no need for scikit-learn if we just want a basic search)
+# Enhanced ML model for better search results
 class MLNotesFinderModel:
     def __init__(self, data_df):
         self.data_df = data_df
         
     def get_notes_link(self, query):
-        query = query.lower()
+        """
+        Find the best matching notes based on the query
+        Uses multiple scoring methods for better accuracy
+        """
+        query = query.lower().strip()
+        
+        if not query:
+            return {
+                'success': False,
+                'message': 'Please enter a search query.'
+            }
+        
         best_match = None
         best_score = 0
         
         for _, row in self.data_df.iterrows():
-            # Check if query matches any keywords, subject, or cycle
-            search_text = (row['Subject'].lower() + ' ' + 
-                           row['Keywords'].lower() + ' ' + 
-                           row['Cycle'].lower() + ' ' + 
-                           row['Semester'].lower())
+            # Create searchable text from all relevant fields
+            search_text = ' '.join([
+                row['Subject'].lower(),
+                row['Keywords'].lower(),
+                row['Cycle'].lower(),
+                row['Semester'].lower()
+            ])
             
-            # Simple scoring - count how many words match
-            query_words = query.split()
-            score = sum(1 for word in query_words if word in search_text)
+            # Calculate score using multiple methods
+            score = self._calculate_match_score(query, search_text, row)
             
             if score > best_score:
                 best_score = score
                 best_match = row
         
-        if best_match is None or best_score == 0:
+        # Return result based on score threshold
+        if best_match is None or best_score < 1:
             return {
                 'success': False,
-                'message': 'No matching notes found.'
+                'message': f'No matching notes found for "{query}". Try keywords like: physics, python, chemistry, math, electronics, etc.'
             }
         
         return {
@@ -68,41 +81,131 @@ class MLNotesFinderModel:
             'keywords': best_match['Keywords'],
             'notes_link': best_match['Notes Link']
         }
+    
+    def _calculate_match_score(self, query, search_text, row):
+        """Calculate match score using multiple criteria"""
+        score = 0
+        query_words = query.split()
+        
+        # Exact subject match gets highest score
+        if query in row['Subject'].lower():
+            score += 10
+            
+        # Exact keyword match gets high score
+        if query in row['Keywords'].lower():
+            score += 8
+            
+        # Word-by-word matching
+        for word in query_words:
+            if len(word) > 2:  # Only consider meaningful words
+                if word in search_text:
+                    score += 2
+                    
+        # Bonus for cycle match
+        if any(cycle in query for cycle in ['physics', 'chemistry']):
+            if any(cycle in row['Cycle'].lower() for cycle in ['physics', 'chemistry']):
+                score += 3
+                
+        return score
 
 # Initialize the model
 model = MLNotesFinderModel(data_df=data)
-print("Model initialized successfully!")
+print("✅ Academic Pal ML Model initialized successfully!")
+print(f"📚 Loaded {len(data)} subjects across {data['Cycle'].nunique()} cycles")
+print("🚀 Ready to find your notes!")
 
 @app.route('/')
 def index():
+    """Serve the main search interface"""
     return render_template('index.html')
 
 @app.route('/search', methods=['POST'])
 def search():
-    query = request.form.get('query', '')
+    """Handle form-based search requests"""
+    try:
+        query = request.form.get('query', '').strip()
+        
+        if not query:
+            return jsonify({
+                'success': False,
+                'message': 'Please enter a search query.'
+            })
+        
+        result = model.get_notes_link(query)
+        return jsonify(result)
     
-    if not query:
+    except Exception as e:
         return jsonify({
             'success': False,
-            'message': 'Please enter a query.'
-        })
-    
-    result = model.get_notes_link(query)
-    return jsonify(result)
+            'message': f'An error occurred: {str(e)}'
+        }), 500
 
 @app.route('/api/search', methods=['POST'])
 def api_search():
-    data = request.get_json()
-    query = data.get('query', '')
+    """Handle JSON-based API search requests"""
+    try:
+        if not request.is_json:
+            return jsonify({
+                'success': False,
+                'message': 'Request must be JSON'
+            }), 400
+            
+        data = request.get_json()
+        query = data.get('query', '').strip()
+        
+        if not query:
+            return jsonify({
+                'success': False,
+                'message': 'Please provide a query parameter.'
+            })
+        
+        result = model.get_notes_link(query)
+        return jsonify(result)
     
-    if not query:
+    except Exception as e:
         return jsonify({
             'success': False,
-            'message': 'Please enter a query.'
+            'message': f'An error occurred: {str(e)}'
+        }), 500
+
+@app.route('/api/subjects', methods=['GET'])
+def get_subjects():
+    """Get list of available subjects"""
+    try:
+        subjects = data['Subject'].unique().tolist()
+        cycles = data['Cycle'].unique().tolist()
+        semesters = data['Semester'].unique().tolist()
+        
+        return jsonify({
+            'success': True,
+            'subjects': subjects,
+            'cycles': cycles,
+            'semesters': semesters
         })
-    
-    result = model.get_notes_link(query)
-    return jsonify(result)
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': f'An error occurred: {str(e)}'
+        }), 500
+
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({
+        'success': False,
+        'message': 'Endpoint not found'
+    }), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    return jsonify({
+        'success': False,
+        'message': 'Internal server error'
+    }), 500
 
 if __name__ == '__main__':
+    print("\n🎓 Starting Academic Pal Notes Finder...")
+    print("📍 Access the app at: http://localhost:8080")
+    print("📍 API endpoint: http://localhost:8080/api/search")
+    print("📍 Available subjects: http://localhost:8080/api/subjects")
+    print("="*50)
     app.run(debug=True, host='0.0.0.0', port=8080)

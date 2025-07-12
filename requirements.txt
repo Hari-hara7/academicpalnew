@@ -1,7 +1,4 @@
 ﻿Flask==3.0.3
-
-flask
-pandas
+pandas==2.2.0
 flask-cors==5.0.1
-flask
-gunicorn
+gunicorn==21.2.0

@@ -42,7 +42,7 @@ export default function RegisterPage() {
             height={80}
             className="mb-2"
           />
-          <h2 className="text-3xl font-semibold font-montserrat">Create an Account</h2>
+          <h2 className="text-3xl font-semibold ">Create an Account</h2>
           <p className="text-sm text-white/60 font-montserrat">Join us today</p>
         </CardHeader>
         <CardContent>

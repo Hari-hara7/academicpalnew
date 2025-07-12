@@ -19,10 +19,68 @@ import {
   Users2,
   CalendarDays,
   Map,
+  BrainCircuit,
+  MessageSquareMore,
+  GraduationCap
 } from 'lucide-react';
 import Link from 'next/link';
 
 const features = [
+    {
+    title: ' Comprehensive Notes',
+    description:
+      'Access crisp, well-organized notes for all subjects. Designed for clarity and speed, these notes help you revise smarter before exams.',
+    icon: NotebookText,
+    iconColor: 'text-purple-500',
+    link: 'https://academicpal.vercel.app/notes.html',
+    buttonText: 'Access Notes',
+  },
+    {
+    title: ' Past Question Papers',
+    description:
+      'Prepare with confidence using past papers. Understand frequently asked questions and get familiar with real exam patterns.',
+    icon: FileText,
+    iconColor: 'text-orange-500',
+    link: 'https://academicpal.vercel.app/Pyq.html',
+    buttonText: 'View Papers',
+  },
+    {
+    title: ' Access & Contribute Materials',
+    description:
+      'Give back to the community! Upload your resources and gain access to a growing collection of shared study content.',
+    icon: UploadCloud,
+    iconColor: 'text-red-500',
+    link: '/upload',
+    buttonText: 'Upload or Explore',
+  },
+  {
+  title: 'Create & Explore Mindtrees',
+  description:
+    'Visualize your learning! Design and browse interactive mind maps crafted by students to simplify complex topics.',
+  icon: BrainCircuit, // Lucide icon suggestion
+  iconColor: 'text-indigo-500',
+  link: '/register',
+  buttonText: 'Start Mapping',
+}
+,
+{
+  title: 'Peer-to-Peer Tutoring',
+  description:
+    'Share your knowledge! Become a tutor or find one to guide you through tough subjects and concepts.',
+  icon: GraduationCap, // Lucide icon suggestion
+  iconColor: 'text-green-600',
+  link: '/register',
+  buttonText: 'Become or Find a Tutor',
+},
+{
+  title: 'Ask & Answer in Forums',
+  description:
+    'Got questions? Post them in the community forum and get answers from fellow students, mentors, and enthusiasts.',
+  icon: MessageSquareMore, // Lucide icon suggestion
+  iconColor: 'text-blue-600',
+  link: '/register',
+  buttonText: 'Join the Discussion',
+},
   {
     title: ' Blogs',
     description:
@@ -42,24 +100,8 @@ const features = [
   buttonText: 'Explore Roadmaps',
 }
 ,
-  {
-    title: ' Comprehensive Notes',
-    description:
-      'Access crisp, well-organized notes for all subjects. Designed for clarity and speed, these notes help you revise smarter before exams.',
-    icon: NotebookText,
-    iconColor: 'text-purple-500',
-    link: 'https://academicpal.vercel.app/notes.html',
-    buttonText: 'Access Notes',
-  },
-  {
-    title: ' Past Question Papers',
-    description:
-      'Prepare with confidence using past papers. Understand frequently asked questions and get familiar with real exam patterns.',
-    icon: FileText,
-    iconColor: 'text-orange-500',
-    link: 'https://academicpal.vercel.app/Pyq.html',
-    buttonText: 'View Papers',
-  },
+
+
   {
     title: ' Real-Time Chat',
     description:
@@ -78,15 +120,7 @@ const features = [
     link: 'https://academicpal-ml-chatbot-g6gn.vercel.app/',
     buttonText: 'Start Searching',
   },
-  {
-    title: ' Access & Contribute Materials',
-    description:
-      'Give back to the community! Upload your resources and gain access to a growing collection of shared study content.',
-    icon: UploadCloud,
-    iconColor: 'text-red-500',
-    link: '/upload',
-    buttonText: 'Upload or Explore',
-  },
+
   {
     title: ' Flashcards',
     description:
