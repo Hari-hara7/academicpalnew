@@ -154,7 +154,7 @@ export default function ContactPage() {
         </section>
 
         <div className="flex flex-col md:flex-row flex-wrap gap-4 mt-10">
-          <Link href="/" passHref>
+          <Link href="/home" passHref>
             <Button
               variant="outline"
               className="bg-gray-200 text-black hover:bg-gray-300 transition w-full md:w-auto"

@@ -190,7 +190,7 @@ const MLTechIcon = ({ tech }: { tech: string }) => mlTechIcons[tech] || null;
 
         {/* Call to action buttons */}
         <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-8">
-          <Link href="/" passHref>
+          <Link href="/home" passHref>
             <Button
               variant="outline"
               className="bg-gray-200 text-black hover:bg-gray-300 transition w-full sm:w-auto"
@@ -198,7 +198,7 @@ const MLTechIcon = ({ tech }: { tech: string }) => mlTechIcons[tech] || null;
               Go to Homepage
             </Button>
           </Link>
-          <Link href="/try" passHref>
+          <Link href="/register" passHref>
             <Button className="bg-gray-200 text-black hover:bg-gray-300 transition w-full sm:w-auto">
               Try AcademicPal Now
             </Button>
