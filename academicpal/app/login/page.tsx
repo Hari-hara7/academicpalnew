@@ -8,6 +8,7 @@ import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 import { Eye, EyeOff } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { toast } from 'sonner'; // ✅ Import toast from sonner
 
 export default function LoginPage() {
   const router = useRouter();
@@ -18,6 +19,7 @@ export default function LoginPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError('');
+
     const res = await fetch('/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -25,10 +27,12 @@ export default function LoginPage() {
     });
 
     if (res.ok) {
+      toast.success('Login successful!');
       router.push('/dashboard');
     } else {
       const { message } = await res.json();
       setError(message);
+      toast.error(message || 'Login failed');
     }
   }
 
@@ -37,7 +41,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md border border-white/40 bg-black/90 backdrop-blur-md text-white shadow-lg">
         <CardHeader className="flex flex-col items-center gap-2">
           <Image
-            src="/academicpal.jpg" // Replace with your logo path
+            src="/academicpal.jpg"
             alt="Logo"
             width={80}
             height={80}

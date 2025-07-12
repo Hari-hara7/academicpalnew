@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
+import { toast } from 'sonner'; // ✅ import sonner toast
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function RegisterPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError('');
+
     const res = await fetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -23,10 +25,12 @@ export default function RegisterPage() {
     });
 
     if (res.ok) {
+      toast.success('Registration successful!');
       router.push('/login');
     } else {
       const { message } = await res.json();
       setError(message);
+      toast.error(message || 'Registration failed');
     }
   }
 
@@ -34,17 +38,17 @@ export default function RegisterPage() {
     <main className="flex min-h-screen items-center justify-center bg-black px-4">
       <Card className="w-full max-w-md border border-white/40 bg-black/50 backdrop-blur-md text-white shadow-lg">
         <CardHeader className="flex flex-col items-center gap-2">
-          {/* Add your logo image here */}
           <Image
-            src="/academicpal.jpg" // Replace with your logo path
+            src="/academicpal.jpg"
             alt="Logo"
             width={80}
             height={80}
             className="mb-2"
           />
-          <h2 className="text-3xl font-semibold ">Create an Account</h2>
+          <h2 className="text-3xl font-semibold">Create an Account</h2>
           <p className="text-sm text-white/60 font-montserrat">Join us today</p>
         </CardHeader>
+
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input
@@ -79,8 +83,9 @@ export default function RegisterPage() {
             </Button>
           </form>
         </CardContent>
-     <CardFooter className="text-center text-sm text-white/50">
-          Don&apos;t have an account?{' '}
+
+        <CardFooter className="text-center text-sm text-white/50">
+          Already have an account?
           <Link
             href="/login"
             className="ml-1 underline text-white hover:text-yellow-400 transition"

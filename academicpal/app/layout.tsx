@@ -9,7 +9,7 @@ import HomeFooter from "../components/Footerhome";
 import BottomNav from "../components/BottomNav";
 import Loginfooter from "../components/LoginFooter";
 import "./globals.css";
-
+import { Toaster } from "sonner";
 
 import { Poppins, Inter, Montserrat, Lato } from "next/font/google";
 
@@ -43,6 +43,7 @@ const lato = Lato({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  
 
   const showHeader = pathname === "/" || pathname === "/signup";
 
@@ -224,6 +225,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     pathname.startsWith("/dashboard/study-groups/") ||
     pathname.startsWith("/dashboard/performance-analytics/edit/")].includes(pathname) && <HomeFooter />}
         {(pathname === "/" || pathname === "/signup") && <Loginfooter />}
+
+
+          <Toaster richColors position="top-right" /> {/* ✅ Toast is injected here */}
       </body>
     </html>
   );

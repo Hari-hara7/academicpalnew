@@ -16,8 +16,9 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
 import Link from 'next/link';
-import { FcGoogle } from "react-icons/fc";
+import { toast } from 'sonner'; // ✅ Toast import
 
 const Login = () => {
   const router = useRouter();
@@ -26,13 +27,16 @@ const Login = () => {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
+  const isValidEmail = (email: string) => /^[a-zA-Z0-9._%+-]+@nmamit\.in$/.test(email);
+
   const handleGoogleSignIn = async () => {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      console.log('Google User:', result.user);
+      toast.success('Signed in successfully with Google!');
       router.push('/home');
     } catch (err: any) {
+      toast.error('Google sign-in failed');
       setError(err.message);
     }
   };
@@ -41,42 +45,50 @@ const Login = () => {
     try {
       const provider = new GithubAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      console.log('GitHub User:', result.user);
+      toast.success('Signed in successfully with GitHub!');
       router.push('/home');
     } catch (err: any) {
+      toast.error('GitHub sign-in failed');
       setError(err.message);
     }
   };
 
-  const isValidEmail = (email: string) => /^[a-zA-Z0-9._%+-]+@nmamit\.in$/.test(email);
-
   const handleForgotPassword = async () => {
     if (!isValidEmail(email)) {
       setError('Please enter a valid NMAMIT email.');
+      toast.error('Invalid NMAMIT email.');
       return;
     }
     try {
       await sendPasswordResetEmail(auth, email);
       setMessage('Password reset email sent. Check your inbox.');
+      toast.success('Password reset email sent!');
     } catch {
       setError('Failed to send password reset email.');
+      toast.error('Error sending password reset email.');
     }
   };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!isValidEmail(email)) {
       setError('Please enter a valid NMAMIT email.');
+      toast.error('Invalid NMAMIT email.');
       return;
     }
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      toast.success('Logged in successfully!');
       router.push('/home');
     } catch (err: any) {
       if (err.message.includes('wrong-password') || err.message.includes('user-not-found')) {
         setError('Incorrect credentials. Please sign up if you don\'t have an account.');
+        toast.error('Incorrect credentials.');
       } else {
         setError(err.message);
+        toast.error('Login failed.');
       }
     }
   };
@@ -106,11 +118,13 @@ const Login = () => {
               Sign in with GitHub
             </Button>
           </div>
+
           <div className="my-6 flex items-center">
             <Separator className="flex-1 bg-gray-600" />
             <span className="mx-4 text-gray-400">OR</span>
             <Separator className="flex-1 bg-gray-600" />
           </div>
+
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <Label htmlFor="email">Email</Label>
@@ -152,7 +166,7 @@ const Login = () => {
           </button>
           <p className="text-sm ">
             Don’t have an account?{' '}
-            <Link href="/signup" className="text-blue-500 hover:underline ">
+            <Link href="/signup" className="text-blue-500 hover:underline">
               Sign up
             </Link>
           </p>

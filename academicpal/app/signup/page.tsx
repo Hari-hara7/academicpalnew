@@ -14,9 +14,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
 import Link from 'next/link';
+import { toast } from 'sonner';
 
 const SignUp = () => {
   const router = useRouter();
@@ -31,9 +32,11 @@ const SignUp = () => {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
+      toast.success('🎉 Signed up with Google successfully!');
       router.push('/home');
     } catch (err: any) {
       setError(err.message);
+      toast.error(`❌ ${err.message}`);
     }
   };
 
@@ -41,9 +44,11 @@ const SignUp = () => {
     try {
       const provider = new GithubAuthProvider();
       await signInWithPopup(auth, provider);
+      toast.success('🎉 Signed up with GitHub successfully!');
       router.push('/home');
     } catch (err: any) {
       setError(err.message);
+      toast.error(`❌ ${err.message}`);
     }
   };
 
@@ -54,24 +59,29 @@ const SignUp = () => {
 
     if (!acceptTerms) {
       setError('You must accept the Terms & Conditions to continue.');
+      toast.error('⚠️ You must accept the Terms & Conditions.');
       return;
     }
 
     if (!isValidEmail(email)) {
       setError('Please enter a valid NMAMIT email.');
+      toast.error('⚠️ Enter a valid NMAMIT email.');
       return;
     }
 
     if (!name.trim() || !usn.trim()) {
       setError('Please enter your full name and USN.');
+      toast.error('⚠️ Name and USN are required.');
       return;
     }
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      toast.success('✅ Registration successful!');
       router.push('/');
     } catch (err: any) {
       setError(err.message);
+      toast.error(`❌ ${err.message}`);
     }
   };
 
